@@ -9,11 +9,12 @@
 |
 .vscode               # this used by Visual Studio Code to store workspace and user settings for a project.
 |
-app                   # all the screens in the project will be in the app folder.
-|
 assets                # assets folder can contain all the static files such as images, fonts, etc.
 |
 src
+|
++-- app               # all the screens in the project will be in the app folder.
+|
 +-- components        # shared components used across the entire application
 |+--- Icons           # contains all icons with svg format
 |+--- ...

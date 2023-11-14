@@ -16,10 +16,29 @@ import {
 
 const containDash = (str: string) => str.includes('-');
 
+/**
+ * Interface for props passed to the Text component.
+ * Extends NativeTextProps to add custom text styles.
+ */
 export interface TextProps extends NativeTextProps {
+  /**
+   * Optional font size for the text.
+   */
   size?: FontSizeTypes;
+
+  /**
+   * Optional font family for the text.
+   */
   fontFamily?: FontFamilyTypes;
+
+  /**
+   * Optional font weight for the text.
+   */
   fontWeight?: FontWeightTypes;
+
+  /**
+   * Optional TextStyle overrides.
+   */
   style?: StyleProp<TextStyle>;
 }
 
@@ -37,7 +56,6 @@ export const Text = ({
     },
   } = useTheme();
 
-  // TODO: migrate all Text to only use literals
   let fontFam: string = fontFamily;
   if (!containDash(fontFam)) {
     fontFam =

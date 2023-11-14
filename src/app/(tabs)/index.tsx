@@ -1,10 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import { Text } from '@/components/Text';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <View style={styles.separator} />
+      <Text fontWeight="700" size="xl">
+        Home
+      </Text>
+      {['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map((size, idx) => (
+        <Text key={idx} size={size as any}>
+          The quick brown fox jumps over the lazy dog.
+        </Text>
+      ))}
     </View>
   );
 }

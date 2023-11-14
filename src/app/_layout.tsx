@@ -1,4 +1,3 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ThemeProvider } from '@rneui/themed';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
@@ -21,9 +20,12 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
+  const [fontsLoaded, error] = useFonts({
+    'inter-regular': require('../../assets/fonts/Inter-Regular.ttf'),
+    'inter-medium': require('../../assets/fonts/Inter-Medium.ttf'),
+    'inter-semibold': require('../../assets/fonts/Inter-SemiBold.ttf'),
+    'inter-bold': require('../../assets/fonts/Inter-Bold.ttf'),
+    nbArchitekt: require('../../assets/fonts/RoobertTRIAL.otf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -32,12 +34,12 @@ export default function RootLayout() {
   }, [error]);
 
   useEffect(() => {
-    if (loaded) {
+    if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [fontsLoaded]);
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 

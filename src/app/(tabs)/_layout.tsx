@@ -27,15 +27,15 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon color={color} name="home" />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link asChild href="/modal">
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
+                    color={Colors[colorScheme ?? 'light'].text}
                     name="info-circle"
                     size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -48,7 +48,7 @@ export default function TabLayout() {
         name="about"
         options={{
           title: 'About',
-          tabBarIcon: ({ color }) => <TabBarIcon name="info" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon color={color} name="info" />,
         }}
       />
     </Tabs>

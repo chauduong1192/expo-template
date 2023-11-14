@@ -3,8 +3,8 @@ import React from 'react';
 import {
   Text as NativeText,
   type TextProps as NativeTextProps,
-  TextStyle,
-  StyleProp,
+  type TextStyle,
+  type StyleProp,
 } from 'react-native';
 
 import { _fontFamily, _fontSize, _fontWeight, font } from './theme';

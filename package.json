@@ -3,14 +3,14 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --ios --android",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "test": "jest --watchAll",
-    "check-types": "tsc",
+    "check-types": "tsc --noEmit",
     "lint:eslint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
-    "validate": "yarn run prettier & yarn run lint:eslint & yarn run check-types & yarn run build",
+    "validate": "yarn run prettier & yarn run lint:eslint & yarn run check-types",
     "prepare": "husky install"
   },
   "jest": {

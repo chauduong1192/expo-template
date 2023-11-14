@@ -33,7 +33,7 @@ export const Text = ({
 }: TextProps) => {
   const {
     theme: {
-      colors: { greys, elements },
+      colors: { elements },
     },
   } = useTheme();
 

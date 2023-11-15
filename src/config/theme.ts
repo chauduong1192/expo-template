@@ -2,6 +2,7 @@ import { createTheme } from '@rneui/themed';
 
 export const theme = createTheme({
   lightColors: {
+    black: '#000000',
     greys: {
       0: '#0d0e13',
       50: '#111218',
@@ -39,6 +40,8 @@ export const theme = createTheme({
       primaryHovered: '#DADBE2',
       secondary: '#232733',
       secondaryHovered: '#282B39',
+      danger: '#E22B4C',
+      dangerHovered: '#D81D3F',
     },
     elements: {
       lowEm: '#737891',
@@ -47,8 +50,10 @@ export const theme = createTheme({
       disabled: '#4B4E63',
       tagTransparent: '#11121880',
     },
+    greyOverlap: '#58585a',
   },
   darkColors: {
+    black: '#000000',
     greys: {
       0: '#0d0e13',
       50: '#111218',
@@ -86,6 +91,8 @@ export const theme = createTheme({
       primaryHovered: '#DADBE2',
       secondary: '#232733',
       secondaryHovered: '#282B39',
+      danger: '#E22B4C',
+      dangerHovered: '#D81D3F',
     },
     elements: {
       lowEm: '#737891',
@@ -94,6 +101,7 @@ export const theme = createTheme({
       disabled: '#4B4E63',
       tagTransparent: '#11121880',
     },
+    greyOverlap: '#58585a',
   },
   mode: 'light',
 });

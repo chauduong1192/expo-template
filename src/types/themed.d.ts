@@ -47,6 +47,8 @@ declare module '@rneui/themed' {
       primaryHovered: string;
       secondary: string;
       secondaryHovered: string;
+      danger: string;
+      dangerHovered: string;
     };
     elements: {
       lowEm: string;
@@ -55,5 +57,6 @@ declare module '@rneui/themed' {
       disabled: string;
       tagTransparent: string;
     };
+    greyOverlap: string;
   }
 }

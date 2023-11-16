@@ -1,8 +1,7 @@
 import { useTheme } from '@rneui/themed';
 
-import { WarningCircleIcon } from '../Icons';
-import { HStack } from '../Layout';
-
+import { WarningCircleIcon } from '@/components/Icons';
+import { HStack } from '@/components/Layout';
 import { Text, type TextProps } from '@/components/Text';
 
 interface HelperTextProps extends TextProps {

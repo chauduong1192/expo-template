@@ -10,6 +10,7 @@ import { cloneIcon } from '@/utils/icon';
  * @param {ReactNode} icon - The icon to be displayed as the adornment.
  * @returns The rendered input adornment component.
  */
+
 export const InputAdornment = ({
   icon,
   ...props

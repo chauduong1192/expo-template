@@ -3,13 +3,14 @@ import { StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { Button } from '@/components/Button';
+import { InputWithLabel } from '@/components/Form';
 import { PlusCircleIcon } from '@/components/Icons';
-import { InputWithLabel } from '@/components/Input';
 import { HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 
 export default function TabOneScreen() {
   const [value, setValue] = useState<string>('');
+  const [code, setCode] = useState<string>('');
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -50,12 +51,33 @@ export default function TabOneScreen() {
             value={value}
             onChangeText={(text: string) => setValue(text)}
           />
+          <InputWithLabel
+            description="Description goes here"
+            // error
+            // helperText="Describe the error and ways to fix it"
+            label="Your name"
+            type="code"
+            value={code}
+            onChangeText={setCode}
+          />
           {/* <InputWithLabel
             description="Description goes here"
+            // error
+            helperText="123123123"
             label="Your name"
-            placeholder="Input Your Name"
-            value={value}
-            onChangeText={(text: string) => setValue(text)}
+            type="code"
+            value={code}
+            onChangeText={setCode}
+          /> */}
+          {/* <InputWithLabel
+            description="Description goes here"
+            // error
+            disabled
+            // helperText="123123123"
+            label="Your name"
+            type="code"
+            value={code}
+            onChangeText={setCode}
           /> */}
         </VStack>
         {['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map((size, idx) => (

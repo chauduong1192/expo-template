@@ -11,14 +11,14 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-import { InputAdornment } from './InputAdornment';
 import { type InputProps } from './types';
-import { Box } from '../Layout';
 
+import { InputAdornment } from '@/components/Form';
+import { Box } from '@/components/Layout';
 import { convertHexToRGBA } from '@/utils/color';
 
 export const Input = ({
-  disabled = false,
+  disabled,
   inputProps,
   inputStyleProps,
   leftIcon,
@@ -157,6 +157,8 @@ const useStyles = makeStyles(
       flex: 1,
       textAlignVertical: 'center',
       fontSize: 14,
+      // NOTE: use lineHeight to center the text
+      // this issue might be from the font height
       lineHeight: 18,
       fontFamily: 'inter-regular',
       color: disabled ? midEm : highEm,

@@ -1,13 +1,14 @@
 import { KeyboardAvoidingView } from 'react-native';
 
-import { Description } from './Description';
-import { HelperText } from './HelperText';
-import { Input } from './Input';
-import { Label } from './Label';
-import { type InputProps } from './types';
-// import { useAppTheme } from '@/theme';
-import { VStack } from '../Layout';
-// import { cloneIcon } from '~/utils/icon';
+import {
+  CodeInputField,
+  Description,
+  HelperText,
+  Input,
+  Label,
+} from '@/components/Form';
+import { type InputProps } from '@/components/Form/Input/types';
+import { VStack } from '@/components/Layout';
 
 /**
  * A reusable input component that renders a label, description, input, and helper text.
@@ -16,8 +17,6 @@ import { VStack } from '../Layout';
 export const InputWithLabel = ({
   disabled = false,
   error = false,
-  // isMasked = true,
-  // type = 'input',
   label,
   description,
   helperText,
@@ -28,15 +27,14 @@ export const InputWithLabel = ({
   rightAdornmentProps,
   placeholder,
   value,
+  type = 'input',
+  cellCount,
+  isMasked = true,
   onChangeText,
   ...props
 }: InputProps) => {
-  return (
-    <KeyboardAvoidingView {...props}>
-      <VStack>
-        <Label>{label}</Label>
-        <Description>{description}</Description>
-      </VStack>
+  const renderInput = (() =>
+    type === 'input' ? (
       <Input
         {...{
           disabled,
@@ -52,6 +50,23 @@ export const InputWithLabel = ({
           rightAdornmentProps,
         }}
       />
+    ) : (
+      <CodeInputField
+        cellCount={cellCount}
+        disabled={disabled}
+        error={error}
+        isMasked={isMasked}
+        value={value}
+        onChangeText={onChangeText}
+      />
+    ))();
+  return (
+    <KeyboardAvoidingView {...props}>
+      <VStack>
+        <Label>{label}</Label>
+        <Description>{description}</Description>
+      </VStack>
+      {renderInput}
       <HelperText error={error}>{helperText}</HelperText>
     </KeyboardAvoidingView>
   );

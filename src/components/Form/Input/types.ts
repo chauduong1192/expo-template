@@ -31,6 +31,7 @@ import {
  * @prop {PressableProps} [rightAdornmentProps] - Props for right icon pressable
  * @prop {string} [placeholder] - Input placeholder text
  * @prop {string} value - Input value
+ * @prop {number} cellCount - Number of cell to be used in the input when type is 'code'
  * @prop {Function} onChangeText - Input change handler
  */
 
@@ -53,6 +54,7 @@ export interface InputProps
   rightAdornmentProps?: PressableProps;
   placeholder?: string;
   value: string;
+  cellCount?: number;
   onChangeText: (text: string) => void;
 }
 

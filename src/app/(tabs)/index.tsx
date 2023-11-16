@@ -21,6 +21,19 @@ export default function TabOneScreen() {
           {/* <Input color /> */}
           <InputWithLabel
             description="Description goes here"
+            error
+            inputProps={{ multiline: true }}
+            inputStyleProps={{ paddingTop: 0 }}
+            label="Your name"
+            leftIcon={<PlusCircleIcon />}
+            placeholder="text area"
+            rightIcon={<PlusCircleIcon />}
+            style={{ alignItems: 'flex-start' }}
+            value={value}
+            onChangeText={setValue}
+          />
+          <InputWithLabel
+            description="Description goes here"
             label="Your name"
             leftIcon={<PlusCircleIcon />}
             placeholder="Input Your Name"
@@ -43,7 +56,7 @@ export default function TabOneScreen() {
           />
           <InputWithLabel
             description="Description goes here"
-            // error
+            error
             helperText="123123"
             label="Your name"
             leftIcon={<PlusCircleIcon />}
@@ -53,14 +66,14 @@ export default function TabOneScreen() {
           />
           <InputWithLabel
             description="Description goes here"
-            // error
-            // helperText="Describe the error and ways to fix it"
+            error
+            helperText="Describe the error and ways to fix it"
             label="Your name"
             type="code"
             value={code}
             onChangeText={setCode}
           />
-          {/* <InputWithLabel
+          <InputWithLabel
             description="Description goes here"
             // error
             helperText="123123123"
@@ -68,8 +81,8 @@ export default function TabOneScreen() {
             type="code"
             value={code}
             onChangeText={setCode}
-          /> */}
-          {/* <InputWithLabel
+          />
+          <InputWithLabel
             description="Description goes here"
             // error
             disabled
@@ -78,7 +91,7 @@ export default function TabOneScreen() {
             type="code"
             value={code}
             onChangeText={setCode}
-          /> */}
+          />
         </VStack>
         {['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map((size, idx) => (
           <Text key={idx} size={size as any}>

@@ -5,7 +5,7 @@ import {
   TextInput as RNTextInput,
   useWindowDimensions,
 } from 'react-native';
-import Animated, {
+import {
   withTiming,
   useAnimatedStyle,
   useSharedValue,
@@ -13,9 +13,7 @@ import Animated, {
 
 import { type InputProps } from './types';
 
-import { InputAdornment } from '@/components/Form';
-import { Box } from '@/components/Layout';
-import { convertHexToRGBA } from '@/utils/color';
+import { BottomBorder, InputAdornment } from '@/components/Form';
 
 export const Input = ({
   disabled,
@@ -40,7 +38,7 @@ export const Input = ({
   } = useTheme();
 
   const { width: screenWidth } = useWindowDimensions();
-  const styles = useStyles({ disabled, error, leftIcon, rightIcon });
+  const styles = useStyles({ disabled, leftIcon, rightIcon });
   const inputRef = useRef<RNTextInput>(null);
   const offset = useSharedValue(-screenWidth);
 
@@ -79,7 +77,10 @@ export const Input = ({
     >
       <InputAdornment
         icon={leftIcon}
-        style={styles.leftIconAdornment}
+        style={[
+          styles.leftIconAdornment, // fix top position for right icon with the text area
+          inputProps?.multiline && { top: 12 },
+        ]}
         {...leftAdornmentProps}
       />
       <RNTextInput
@@ -89,7 +90,12 @@ export const Input = ({
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
         selectionColor={selectionColor}
-        style={[styles.inputStyle, inputStyleProps]}
+        style={[
+          styles.inputStyle,
+          // fix height for text area input
+          inputProps?.multiline && { height: 106 },
+          inputStyleProps,
+        ]}
         value={value}
         onBlur={handleOnBlur}
         onChangeText={onChangeText}
@@ -97,17 +103,18 @@ export const Input = ({
       />
       <InputAdornment
         icon={rightIcon}
-        style={styles.rightIconAdornment}
+        style={[
+          styles.rightIconAdornment,
+          // fix top position for right icon with the text area
+          inputProps?.multiline && { top: 12 },
+        ]}
         {...rightAdornmentProps}
       />
-      <Box style={[styles.lineBottom, styles.lineMaskBottom]} />
-      <Animated.View
-        style={[
-          styles.lineBottom,
-          styles.lineOverrideBottom,
-          { width: disabled ? 0 : screenWidth },
-          animatedStyles,
-        ]}
+      <BottomBorder
+        disabled={disabled}
+        error={error}
+        style={animatedStyles}
+        width={screenWidth}
       />
     </Pressable>
   );
@@ -117,19 +124,15 @@ const useStyles = makeStyles(
   (
     {
       colors: {
-        white,
         base: { bg, bgAlternate },
         elements: { disabled: disableBg, midEm, highEm },
-        controls: { danger },
-        border: { interactive },
       },
     },
     {
       disabled,
-      error,
       leftIcon,
       rightIcon,
-    }: Pick<InputProps, 'disabled' | 'error' | 'leftIcon' | 'rightIcon'>,
+    }: Pick<InputProps, 'disabled' | 'leftIcon' | 'rightIcon'>,
   ) => ({
     container: {
       overflow: 'hidden',
@@ -163,31 +166,6 @@ const useStyles = makeStyles(
       fontFamily: 'inter-regular',
       color: disabled ? midEm : highEm,
       height: 20,
-    },
-    lineBottom: {
-      borderRadius: 6,
-      bottom: 0,
-      height: 2,
-      left: 0,
-      right: 0,
-      position: 'absolute',
-    },
-    lineMaskBottom: {
-      zIndex: 0,
-      right: 0,
-      backgroundColor: interactive,
-    },
-    lineOverrideBottom: {
-      zIndex: 1,
-      backgroundColor: error ? danger : highEm,
-      shadowColor: convertHexToRGBA(error ? danger : white, 0.45),
-      shadowOffset: {
-        width: 0,
-        height: 0,
-      },
-      shadowRadius: 8,
-      shadowOpacity: 1,
-      elevation: 5,
     },
   }),
 );

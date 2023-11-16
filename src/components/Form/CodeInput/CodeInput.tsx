@@ -10,10 +10,12 @@ import {
   type RenderCellOptions,
 } from 'react-native-confirmation-code-field';
 
-import { BottomBorder } from '@/components/Form/BottomBorder';
+import { BottomBorder } from '../BottomBorder';
+
 import { Text } from '@/components/Text';
 
 const DEFAULT_CELL_COUNT = 6;
+const DEFAULT_WIDTH = 52;
 
 interface CodeInputFieldProps {
   value: string;
@@ -81,7 +83,12 @@ export const CodeInputField = ({
         >
           {textChild ?? 'x'}
         </Text>
-        <BottomBorder error={error} isFocused={isFocused} />
+        <BottomBorder
+          disabled={disabled}
+          error={error}
+          style={{ display: !!error || isFocused ? 'flex' : 'none' }}
+          width={DEFAULT_WIDTH}
+        />
       </Pressable>
     );
   };
@@ -124,7 +131,7 @@ const useStyles = makeStyles(
       backgroundColor: disabled ? disableBg : bgAlternate,
       justifyContent: 'center',
       alignItems: 'center',
-      width: 52,
+      width: DEFAULT_WIDTH,
       height: 48,
     },
   }),

@@ -1,39 +1,35 @@
-import { makeStyles, useTheme } from '@rneui/themed';
-import { View } from 'react-native';
+import { makeStyles } from '@rneui/themed';
+import { View, type ViewProps } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { convertHexToRGBA } from '@/utils/color';
 
-interface BottomBorderProps {
+interface BottomBorderProps extends ViewProps {
   error?: boolean;
   isFocused?: boolean;
+  disabled?: boolean;
+  width?: number;
 }
 
 export const BottomBorder = ({
   error = false,
-  isFocused = false,
-  ...props
+  disabled = false,
+  style,
+  width,
 }: BottomBorderProps) => {
   const styles = useStyles({ error });
-  const {
-    theme: {
-      colors: {
-        elements: { highEm },
-        controls: { danger },
-        border: { interactive },
-      },
-    },
-  } = useTheme();
   return (
-    <View
-      {...props}
-      style={[
-        styles.lineBottom,
-        (!!error || isFocused) && styles.lineBottomShadow,
-        {
-          backgroundColor: error ? danger : isFocused ? highEm : interactive,
-        },
-      ]}
-    />
+    <>
+      <View style={[styles.lineBottom, styles.lineMaskBottom]} />
+      <Animated.View
+        style={[
+          styles.lineBottom,
+          styles.lineOverrideBottom,
+          { width: disabled ? 0 : width },
+          style,
+        ]}
+      />
+    </>
   );
 };
 
@@ -42,6 +38,7 @@ const useStyles = makeStyles(
     {
       colors: {
         white,
+        elements: { highEm },
         controls: { danger },
         border: { interactive },
       },
@@ -55,10 +52,15 @@ const useStyles = makeStyles(
       left: 0,
       right: 0,
       position: 'absolute',
-      backgroundColor: error ? danger : interactive,
     },
-    lineBottomShadow: {
-      // Ios
+    lineMaskBottom: {
+      zIndex: 0,
+      right: 0,
+      backgroundColor: interactive,
+    },
+    lineOverrideBottom: {
+      zIndex: 1,
+      backgroundColor: error ? danger : highEm,
       shadowColor: convertHexToRGBA(error ? danger : white, 0.45),
       shadowOffset: {
         width: 0,
@@ -66,7 +68,6 @@ const useStyles = makeStyles(
       },
       shadowRadius: 8,
       shadowOpacity: 1,
-      // Android
       elevation: 5,
     },
   }),

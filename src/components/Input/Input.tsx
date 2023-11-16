@@ -1,9 +1,18 @@
 import { makeStyles, useTheme } from '@rneui/themed';
-import { useRef, useState } from 'react';
-import { Pressable, TextInput as RNTextInput } from 'react-native';
+import { useEffect, useRef } from 'react';
+import {
+  Pressable,
+  TextInput as RNTextInput,
+  useWindowDimensions,
+} from 'react-native';
+import Animated, {
+  withTiming,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 import { InputAdornment } from './InputAdornment';
-import { type InputStates, type InputProps } from './types';
+import { type InputProps } from './types';
 import { Box } from '../Layout';
 
 import { convertHexToRGBA } from '@/utils/color';
@@ -22,8 +31,6 @@ export const Input = ({
   rightAdornmentProps,
   ...props
 }: InputProps) => {
-  const [state, setState] = useState<InputStates>('blur');
-
   const {
     theme: {
       colors: {
@@ -32,9 +39,10 @@ export const Input = ({
     },
   } = useTheme();
 
-  const styles = useStyles({ disabled, error, state, leftIcon, rightIcon });
-
+  const { width: screenWidth } = useWindowDimensions();
+  const styles = useStyles({ disabled, error, leftIcon, rightIcon });
   const inputRef = useRef<RNTextInput>(null);
+  const offset = useSharedValue(-screenWidth);
 
   const handleContainerPress = () => {
     if (!disabled) {
@@ -42,17 +50,26 @@ export const Input = ({
     }
   };
 
+  useEffect(() => {
+    if (error) {
+      offset.value = withTiming(0);
+    }
+  }, [error]);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
+  }));
+
   const handleOnFocus = () => {
-    setState('focus');
+    offset.value = withTiming(0);
   };
 
   const handleOnBlur = () => {
-    setState('blur');
+    offset.value = withTiming(error ? 0 : -screenWidth);
   };
 
   const placeholderTextColor = disabled ? midEm : lowEm;
   const selectionColor = disabled ? 'transparent' : highEm;
-  const isBottomShadow = state === 'focus' || !!error;
 
   return (
     <Pressable
@@ -83,8 +100,14 @@ export const Input = ({
         style={styles.rightIconAdornment}
         {...rightAdornmentProps}
       />
-      <Box
-        style={[styles.lineBottom, isBottomShadow && styles.lineBottomShadow]}
+      <Box style={[styles.lineBottom, styles.lineMaskBottom]} />
+      <Animated.View
+        style={[
+          styles.lineBottom,
+          styles.lineOverrideBottom,
+          { width: disabled ? 0 : screenWidth },
+          animatedStyles,
+        ]}
       />
     </Pressable>
   );
@@ -103,13 +126,10 @@ const useStyles = makeStyles(
     },
     {
       disabled,
-      state,
       error,
       leftIcon,
       rightIcon,
-    }: Pick<InputProps, 'disabled' | 'error' | 'leftIcon' | 'rightIcon'> & {
-      state: InputStates;
-    },
+    }: Pick<InputProps, 'disabled' | 'error' | 'leftIcon' | 'rightIcon'>,
   ) => ({
     container: {
       overflow: 'hidden',
@@ -145,17 +165,19 @@ const useStyles = makeStyles(
     lineBottom: {
       borderRadius: 6,
       bottom: 0,
-      right: 0,
-      left: 0,
       height: 2,
+      left: 0,
+      right: 0,
       position: 'absolute',
-      backgroundColor: error
-        ? danger
-        : state === 'focus'
-          ? highEm
-          : interactive,
     },
-    lineBottomShadow: {
+    lineMaskBottom: {
+      zIndex: 0,
+      right: 0,
+      backgroundColor: interactive,
+    },
+    lineOverrideBottom: {
+      zIndex: 1,
+      backgroundColor: error ? danger : highEm,
       shadowColor: convertHexToRGBA(error ? danger : white, 0.45),
       shadowOffset: {
         width: 0,

@@ -42,6 +42,7 @@ export default function TabOneScreen() {
           />
           <InputWithLabel
             description="Description goes here"
+            // error
             helperText="123123"
             label="Your name"
             leftIcon={<PlusCircleIcon />}

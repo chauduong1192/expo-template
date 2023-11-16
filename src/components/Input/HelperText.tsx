@@ -22,7 +22,7 @@ export const HelperText = ({ children, error, ...props }: HelperTextProps) => {
   if (!children) return null;
 
   return (
-    <HStack alignItems="center" gap={4} marginTop={6}>
+    <HStack alignItems="center" gap={4} marginTop="6px">
       {error && <WarningCircleIcon color={danger} height={16} width={16} />}
       {typeof children === 'string' ? (
         <Text size="xs" style={{ color: error ? danger : midEm }} {...props}>

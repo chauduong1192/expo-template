@@ -14,6 +14,7 @@ import {
 import { type InputProps } from './types';
 
 import { BottomBorder, InputAdornment } from '@/components/Form';
+import { BORDER_RADIUS_BASE } from '@/constants';
 
 export const Input = ({
   disabled,
@@ -140,7 +141,7 @@ const useStyles = makeStyles(
       flexDirection: 'row',
       alignItems: 'center',
       width: '100%',
-      borderRadius: 6,
+      borderRadius: BORDER_RADIUS_BASE,
       borderTopWidth: 1,
       borderColor: bg,
       paddingLeft: leftIcon ? 38 : 12,

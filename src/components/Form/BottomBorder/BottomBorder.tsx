@@ -2,6 +2,7 @@ import { makeStyles } from '@rneui/themed';
 import { View, type ViewProps } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { BORDER_RADIUS_BASE } from '@/constants';
 import { convertHexToRGBA } from '@/utils/color';
 
 interface BottomBorderProps extends ViewProps {
@@ -46,7 +47,7 @@ const useStyles = makeStyles(
     { error }: { error: boolean },
   ) => ({
     lineBottom: {
-      borderRadius: 6,
+      borderRadius: BORDER_RADIUS_BASE,
       bottom: 0,
       height: 2,
       left: 0,

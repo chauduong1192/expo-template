@@ -33,6 +33,7 @@ export const theme = createTheme({
       separatorEmphasized: '#bbc0df14',
       interactiveHovered: '#232733',
       interactive: '#1F222D',
+      interactiveAlpha: '#acb5f324',
       emphasized: '#EBECEF',
     },
     controls: {

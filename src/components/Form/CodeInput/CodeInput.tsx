@@ -13,6 +13,7 @@ import {
 import { BottomBorder } from '../BottomBorder';
 
 import { Text } from '@/components/Text';
+import { BORDER_RADIUS_BASE } from '@/constants';
 
 const DEFAULT_CELL_COUNT = 6;
 const DEFAULT_WIDTH = 52;
@@ -125,7 +126,7 @@ const useStyles = makeStyles(
     cellContainer: {
       position: 'relative',
       overflow: 'hidden',
-      borderRadius: 6,
+      borderRadius: BORDER_RADIUS_BASE,
       borderTopWidth: 1,
       borderColor: bg,
       backgroundColor: disabled ? disableBg : bgAlternate,

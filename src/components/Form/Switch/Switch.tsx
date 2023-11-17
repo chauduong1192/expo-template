@@ -7,6 +7,7 @@ import {
 import { Label, Description } from '@/components/Form';
 import { type InputProps } from '@/components/Form/Input/types';
 import { Box, HStack, VStack } from '@/components/Layout';
+import { BORDER_RADIUS_BASE } from '@/constants';
 
 interface SwitchProps
   extends NativeSwitchProps,
@@ -49,7 +50,7 @@ export const Switch = ({
         circleInActiveColor={disabled ? disabledBg : primary}
         circleSize={20}
         disabled={disabled}
-        innerCircleStyle={{ borderRadius: 6 }}
+        innerCircleStyle={{ borderRadius: BORDER_RADIUS_BASE }}
         renderActiveText={false}
         renderInActiveText={false}
         renderInsideCircle={() => (

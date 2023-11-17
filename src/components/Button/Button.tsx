@@ -33,6 +33,7 @@ import {
 } from './types';
 
 import { Text } from '@/components/Text';
+import { BORDER_RADIUS_BASE } from '@/constants';
 import { cloneIcon } from '@/utils/icon';
 
 /**
@@ -89,7 +90,7 @@ export const Button = ({
   onPressOut,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
-  const [state, setState] = useState<ButtonStates>('default');
+  const [state, setState] = useState<ButtonStates>('idle');
 
   const {
     theme: {
@@ -98,7 +99,7 @@ export const Button = ({
   } = useTheme();
 
   useEffect(() => {
-    setState(disabled ? 'disabled' : 'default');
+    setState(disabled ? 'disabled' : 'idle');
   }, [disabled]);
 
   const handlePressIn = (e: GestureResponderEvent) => {
@@ -108,7 +109,7 @@ export const Button = ({
 
   const handlePressOut = (e: GestureResponderEvent) => {
     onPressOut?.(e);
-    setState('default');
+    setState('idle');
   };
 
   const handleOnPress = useCallback(
@@ -189,7 +190,7 @@ export const Button = ({
 const styles = StyleSheet.create({
   content: {
     position: 'relative',
-    borderRadius: 6,
+    borderRadius: BORDER_RADIUS_BASE,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

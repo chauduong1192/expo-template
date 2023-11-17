@@ -5,6 +5,6 @@ export type ButtonVariants =
   | 'danger'
   | 'overlay';
 
-export type ButtonStates = 'default' | 'hovered' | 'disabled';
+export type ButtonStates = 'idle' | 'hovered' | 'disabled';
 
 export type ButtonSizes = 'xs' | 's' | 'm';

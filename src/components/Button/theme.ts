@@ -33,7 +33,7 @@ export const _variant = (): Record<
 
   return {
     primary: {
-      default: {
+      idle: {
         content: {
           backgroundColor: primary,
         },
@@ -59,7 +59,7 @@ export const _variant = (): Record<
       },
     },
     secondary: {
-      default: {
+      idle: {
         content: {
           backgroundColor: secondary,
         },
@@ -85,7 +85,7 @@ export const _variant = (): Record<
       },
     },
     tertiary: {
-      default: {
+      idle: {
         content: {
           backgroundColor: 'transparent',
         },
@@ -111,7 +111,7 @@ export const _variant = (): Record<
       },
     },
     danger: {
-      default: {
+      idle: {
         content: {
           backgroundColor: danger,
         },
@@ -137,7 +137,7 @@ export const _variant = (): Record<
       },
     },
     overlay: {
-      default: {
+      idle: {
         content: {
           backgroundColor: greyOverlap,
           backdropFilter: 'blur(4px)',

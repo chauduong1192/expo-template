@@ -40,6 +40,7 @@ declare module '@rneui/themed' {
       separatorEmphasized: string;
       interactiveHovered: string;
       interactive: string;
+      interactiveAlpha: string;
       emphasized: string;
     };
     controls: {

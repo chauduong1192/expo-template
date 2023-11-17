@@ -5,6 +5,7 @@ import { useToggle } from 'usehooks-ts';
 
 import { Button } from '@/components/Button';
 import { InputWithLabel, Switch } from '@/components/Form';
+import { Radio } from '@/components/Form/Radio';
 import { PlusCircleIcon } from '@/components/Icons';
 import { HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
@@ -21,6 +22,12 @@ export default function TabOneScreen() {
           Home
         </Text>
         <VStack gap={10} mb={20} width="100%">
+          <Radio
+            description="Description goes here"
+            label="Label"
+            value={switchValue}
+            onValueChange={toggle}
+          />
           <Switch
             description="Description goes here"
             // disabled

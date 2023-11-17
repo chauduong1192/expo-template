@@ -16,12 +16,10 @@ export const Label = ({ children, ...props }: TextProps) => {
     },
   } = useTheme();
 
+  if (!children) return null;
+
   return (
-    <Text
-      fontWeight="500"
-      style={{ color: highEm, marginBottom: 2 }}
-      {...props}
-    >
+    <Text fontWeight="500" {...props} style={[{ color: highEm }, props.style]}>
       {children}
     </Text>
   );

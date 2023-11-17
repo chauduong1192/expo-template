@@ -6,3 +6,4 @@ export * from './Input';
 export * from './InputAdornment';
 export * from './InputWithLabel';
 export * from './Label';
+export * from './Switch';

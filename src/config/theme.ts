@@ -50,6 +50,9 @@ export const theme = createTheme({
       disabled: '#4B4E63',
       tagTransparent: '#11121880',
     },
+    others: {
+      orange: '#F16445',
+    },
     greyOverlap: '#58585a',
   },
   darkColors: {

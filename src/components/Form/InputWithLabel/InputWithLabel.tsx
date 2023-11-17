@@ -61,8 +61,8 @@ export const InputWithLabel = ({
       />
     ))();
   return (
-    <KeyboardAvoidingView {...props}>
-      <VStack>
+    <KeyboardAvoidingView {...props} style={{ gap: 6 }}>
+      <VStack gap={2}>
         <Label>{label}</Label>
         <Description>{description}</Description>
       </VStack>

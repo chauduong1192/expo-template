@@ -6,8 +6,9 @@ import { Text, type TextProps } from '@/components/Text';
  */
 
 export const Description = ({ children, ...props }: TextProps) => {
+  if (!children) return null;
   return (
-    <Text size="xs" style={{ marginBottom: 6 }} {...props}>
+    <Text size="xs" {...props}>
       {children}
     </Text>
   );

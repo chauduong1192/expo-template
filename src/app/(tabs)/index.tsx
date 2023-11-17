@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useToggle } from 'usehooks-ts';
 
 import { Button } from '@/components/Button';
-import { InputWithLabel } from '@/components/Form';
+import { InputWithLabel, Switch } from '@/components/Form';
 import { PlusCircleIcon } from '@/components/Icons';
 import { HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
@@ -11,6 +12,8 @@ import { Text } from '@/components/Text';
 export default function TabOneScreen() {
   const [value, setValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
+  const [switchValue, toggle] = useToggle();
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -18,6 +21,15 @@ export default function TabOneScreen() {
           Home
         </Text>
         <VStack gap={10} mb={20} width="100%">
+          <Switch
+            description="Description goes here"
+            // disabled
+            label="Label"
+            value={switchValue}
+            onValueChange={toggle}
+          />
+          <Switch value={switchValue} onValueChange={toggle} />
+          <Switch disabled value={switchValue} onValueChange={toggle} />
           {/* <Input color /> */}
           <InputWithLabel
             description="Description goes here"

@@ -57,6 +57,9 @@ declare module '@rneui/themed' {
       disabled: string;
       tagTransparent: string;
     };
+    others: {
+      orange: string;
+    };
     greyOverlap: string;
   }
 }

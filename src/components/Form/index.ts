@@ -1,4 +1,5 @@
 export * from './BottomBorder';
+export * from './Checkbox';
 export * from './CodeInput';
 export * from './Description';
 export * from './HelperText';

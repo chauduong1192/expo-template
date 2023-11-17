@@ -70,7 +70,7 @@ export const CodeInputField = ({
     }
 
     return (
-      <Pressable style={[styles.cellContainer]}>
+      <Pressable key={index} style={[styles.cellContainer]}>
         <Text
           size="l"
           style={{

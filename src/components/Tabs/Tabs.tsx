@@ -14,6 +14,8 @@ import {
   type RouteProps,
   type TabBarProps,
 } from './types';
+import { Badge } from '../Badge';
+import { HStack } from '../Layout';
 
 import { Text } from '@/components/Text';
 
@@ -70,10 +72,30 @@ export const Tabs = ({
 
   const renderScene = SceneMap(scenes ?? {});
 
-  const renderLabel = ({ focused, route: { title } }: LabelProps) => (
-    <Text size="l" style={[focused ? labelFocusedStyle : labelStyle]}>
-      {title}
-    </Text>
+  const renderLabel = ({
+    focused,
+    route: { title, badgeLabel },
+  }: LabelProps) => (
+    <HStack alignItems="center" justifyContent="center">
+      <Text
+        size="l"
+        style={[
+          focused ? labelFocusedStyle : labelStyle,
+          { textTransform: 'uppercase', alignSelf: 'flex-start' },
+        ]}
+      >
+        {title}
+      </Text>
+      {badgeLabel && (
+        <Badge
+          style={{
+            marginLeft: 12,
+          }}
+        >
+          {badgeLabel}
+        </Badge>
+      )}
+    </HStack>
   );
 
   const renderIcon = ({ focused, route: { icon } }: IconProps) => {
@@ -82,6 +104,8 @@ export const Tabs = ({
     }
     return cloneElement(icon as ReactElement, {
       color: focused ? iconFocusedColor : iconColor,
+      width: 20,
+      height: 20,
     });
   };
 
@@ -116,5 +140,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
   },
 });

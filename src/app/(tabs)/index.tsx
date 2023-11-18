@@ -14,6 +14,8 @@ import { Text } from '@/components/Text';
 const tabs = [
   {
     title: 'entire',
+    // badgeLabel: 1,
+    icon: <PlusCircleIcon height={12} width={12} />,
     component: () => (
       <View>
         <Text>entire</Text>
@@ -22,6 +24,8 @@ const tabs = [
   },
   {
     title: 'account',
+    badgeLabel: 1,
+    icon: <PlusCircleIcon height={12} width={12} />,
     component: () => (
       <View>
         <Text>entire</Text>
@@ -29,6 +33,8 @@ const tabs = [
     ),
   },
   {
+    icon: <PlusCircleIcon height={12} width={12} />,
+    // badgeLabel: 1,
     title: 'customerConfirmation',
     component: () => (
       <View>
@@ -37,6 +43,8 @@ const tabs = [
     ),
   },
   {
+    icon: <PlusCircleIcon height={12} width={12} />,
+    // badgeLabel: 1,
     title: 'transactionAsset',
     component: () => (
       <View>
@@ -45,6 +53,8 @@ const tabs = [
     ),
   },
   {
+    icon: <PlusCircleIcon height={12} width={12} />,
+    // badgeLabel: 1,
     title: 'depositAndWithdrawal',
     component: () => (
       <View>
@@ -60,9 +70,12 @@ export default function TabOneScreen() {
   const [switchValue, toggle] = useToggle();
 
   const tabsList = useCallback(() => {
-    return tabs.map((tab) => ({
-      key: tab.title,
-      title: tab.title,
+    return tabs.map(({ component, title, badgeLabel, icon }) => ({
+      icon,
+      title,
+      badgeLabel,
+      component,
+      key: title,
     }));
   }, [])();
 
@@ -85,7 +98,7 @@ export default function TabOneScreen() {
               transactionAsset: tabs[3].component,
               depositAndWithdrawal: tabs[4].component,
             }}
-            tabs={tabsList}
+            tabs={tabsList as any}
             type="hug"
           />
           <Checkbox

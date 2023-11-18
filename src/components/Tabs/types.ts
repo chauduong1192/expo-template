@@ -1,4 +1,4 @@
-import { type ReactElement, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import {
   type NavigationState,
   type Route,
@@ -6,7 +6,8 @@ import {
 } from 'react-native-tab-view';
 
 export type RouteProps = Omit<Route, 'icon'> & {
-  icon?: ReactNode | ReactElement | null;
+  icon?: ReactNode;
+  badgeLabel?: string;
 } & Route;
 
 export type TabsTypeVariants = 'hug' | 'full';

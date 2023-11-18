@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useToggle } from 'usehooks-ts';
 
 import { Button } from '@/components/Button';
+import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Switch } from '@/components/Form';
 import { Checkbox } from '@/components/Form/Checkbox';
 import { PlusCircleIcon } from '@/components/Icons';
@@ -85,6 +86,10 @@ export default function TabOneScreen() {
         <Text fontWeight="700" size="xl">
           Home
         </Text>
+        <EmptyState
+          description="Once you follow other users, your notifications will show here."
+          title="No notifications yet"
+        />
         <VStack gap={10} mb={20} width="100%">
           <Tabs
             indexActive={0}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useToggle } from 'usehooks-ts';
@@ -8,12 +8,63 @@ import { InputWithLabel, Switch } from '@/components/Form';
 import { Checkbox } from '@/components/Form/Checkbox';
 import { PlusCircleIcon } from '@/components/Icons';
 import { HStack, VStack } from '@/components/Layout';
+import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
+
+const tabs = [
+  {
+    title: 'entire',
+    component: () => (
+      <View>
+        <Text>entire</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'account',
+    component: () => (
+      <View>
+        <Text>entire</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'customerConfirmation',
+    component: () => (
+      <View>
+        <Text>entire</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'transactionAsset',
+    component: () => (
+      <View>
+        <Text>entire</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'depositAndWithdrawal',
+    component: () => (
+      <View>
+        <Text>entire</Text>
+      </View>
+    ),
+  },
+];
 
 export default function TabOneScreen() {
   const [value, setValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
+
+  const tabsList = useCallback(() => {
+    return tabs.map((tab) => ({
+      key: tab.title,
+      title: tab.title,
+    }));
+  }, [])();
 
   return (
     <View style={styles.container}>
@@ -22,12 +73,21 @@ export default function TabOneScreen() {
           Home
         </Text>
         <VStack gap={10} mb={20} width="100%">
-          {/* <Radio
-            description="Description goes here"
-            label="Label"
-            value={switchValue}
-            onValueChange={toggle}
-          /> */}
+          <Tabs
+            indexActive={0}
+            sceneContainerStyle={{
+              paddingTop: 10,
+            }}
+            scenes={{
+              entire: tabs[0].component,
+              account: tabs[1].component,
+              customerConfirmation: tabs[2].component,
+              transactionAsset: tabs[3].component,
+              depositAndWithdrawal: tabs[4].component,
+            }}
+            tabs={tabsList}
+            type="hug"
+          />
           <Checkbox
             description="Description goes here"
             // disabled

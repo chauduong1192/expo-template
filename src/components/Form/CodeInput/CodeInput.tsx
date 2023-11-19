@@ -10,8 +10,7 @@ import {
   type RenderCellOptions,
 } from 'react-native-confirmation-code-field';
 
-import { BottomBorder } from '../BottomBorder';
-
+import { BottomBorder } from '@/components/Form/BottomBorder';
 import { Text } from '@/components/Text';
 import { BORDER_RADIUS_BASE } from '@/constants';
 

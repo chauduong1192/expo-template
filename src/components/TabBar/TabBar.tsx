@@ -12,7 +12,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BorderTopAnimated } from './BorderTopAnimated';
 import { TabItem } from './TabItem';
-import { HStack } from '../Layout';
+
+import { HStack } from '@/components/Layout';
 
 interface TabBarProps extends BottomTabBarProps {
   icons?: ReactElement[];

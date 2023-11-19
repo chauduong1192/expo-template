@@ -2,8 +2,7 @@ import { useTheme } from '@rneui/themed';
 import React, { type ReactNode } from 'react';
 import { type ViewProps } from 'react-native';
 
-import { BorderIcon, ListBulletsIcon } from '../Icons';
-
+import { BorderIcon, ListBulletsIcon } from '@/components/Icons';
 import { Box, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 

@@ -1,9 +1,8 @@
 import { makeStyles, useTheme } from '@rneui/themed';
 import { Pressable, type ViewProps } from 'react-native';
 
-import { Description } from '../Description';
-import { type InputProps } from '../Input/types';
-
+import { Description } from '@/components/Form/Description';
+import { type InputProps } from '@/components/Form/Input/types';
 import { CheckIcon } from '@/components/Icons';
 import { Box, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';

@@ -25,7 +25,7 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
     transform: [
       {
         translateX: withTiming(translateX.value, {
-          easing: Easing.inOut(Easing.quad),
+          easing: Easing.elastic(1),
         }),
       },
     ],

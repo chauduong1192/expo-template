@@ -14,9 +14,9 @@ import {
   type RouteProps,
   type TabBarProps,
 } from './types';
-import { Badge } from '../Badge';
-import { HStack } from '../Layout';
 
+import { Badge } from '@/components/Badge';
+import { HStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 
 interface TabsProps {
@@ -78,6 +78,8 @@ export const Tabs = ({
   }: LabelProps) => (
     <HStack alignItems="center" justifyContent="center">
       <Text
+        fontFamily="nb-architekt"
+        shadowText={focused}
         size="l"
         style={[
           focused ? labelFocusedStyle : labelStyle,
@@ -104,8 +106,8 @@ export const Tabs = ({
     }
     return cloneElement(icon as ReactElement, {
       color: focused ? iconFocusedColor : iconColor,
-      width: 20,
-      height: 20,
+      width: 24,
+      height: 24,
     });
   };
 

@@ -8,6 +8,7 @@ import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Checkbox } from '@/components/Form';
 import { PlusCircleIcon } from '@/components/Icons';
 import { HStack, VStack } from '@/components/Layout';
+import { ScreenContainer } from '@/components/ScreenContainer';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
 
@@ -15,7 +16,7 @@ const tabs = [
   {
     title: 'entire',
     // badgeLabel: 1,
-    icon: <PlusCircleIcon height={12} width={12} />,
+    icon: <PlusCircleIcon />,
     component: () => (
       <View>
         <Text>entire</Text>
@@ -25,7 +26,7 @@ const tabs = [
   {
     title: 'account',
     badgeLabel: 1,
-    icon: <PlusCircleIcon height={12} width={12} />,
+    // icon: <PlusCircleIcon />,
     component: () => (
       <View>
         <Text>entire</Text>
@@ -33,7 +34,7 @@ const tabs = [
     ),
   },
   {
-    icon: <PlusCircleIcon height={12} width={12} />,
+    // icon: <PlusCircleIcon />,
     // badgeLabel: 1,
     title: 'customerConfirmation',
     component: () => (
@@ -43,7 +44,7 @@ const tabs = [
     ),
   },
   {
-    icon: <PlusCircleIcon height={12} width={12} />,
+    // icon: <PlusCircleIcon />,
     // badgeLabel: 1,
     title: 'transactionAsset',
     component: () => (
@@ -53,7 +54,7 @@ const tabs = [
     ),
   },
   {
-    icon: <PlusCircleIcon height={12} width={12} />,
+    // icon: <PlusCircleIcon height={12} width={12} />,
     // badgeLabel: 1,
     title: 'depositAndWithdrawal',
     component: () => (
@@ -80,8 +81,8 @@ export default function HomeScreen() {
   }, [])();
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <ScreenContainer style={styles.container}>
+      <ScrollView style={{ padding: 20 }}>
         <Text fontWeight="700" size="xl">
           Home
         </Text>
@@ -379,7 +380,7 @@ export default function HomeScreen() {
           </VStack>
         </HStack>
       </ScrollView>
-    </View>
+    </ScreenContainer>
   );
 }
 
@@ -388,7 +389,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10,
+    // padding: 10,
     backgroundColor: '#0d0e13',
   },
   title: {

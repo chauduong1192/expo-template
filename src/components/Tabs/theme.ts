@@ -55,9 +55,6 @@ export const _variant = (): Record<
       },
       labelFocusedStyle: {
         color: highEm,
-        textShadowColor: convertHexToRGBA(white, 0.37),
-        textShadowOffset: { width: 0, height: 0 },
-        textShadowRadius: 4,
       },
       labelStyle: {
         color: lowEm,
@@ -88,9 +85,6 @@ export const _variant = (): Record<
       labelFocusedStyle: {
         fontWeight: 'bold',
         color: highEm,
-        textShadowColor: convertHexToRGBA(white, 0.37),
-        textShadowOffset: { width: 0, height: 0 },
-        textShadowRadius: 4,
       },
       labelStyle: {
         fontWeight: '400',

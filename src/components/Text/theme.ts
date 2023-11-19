@@ -14,16 +14,16 @@ export const _fontWeight: Record<FontWeightTypes, string> = {
 };
 
 export const _fontFamily: Record<
-  Extract<FontFamilyTypes, 'inter' | 'nbArchitekt'>,
+  Extract<FontFamilyTypes, 'inter' | 'nb-architekt'>,
   string
 > = {
-  inter: 'inter-',
-  nbArchitekt: 'nbArchitekt',
+  inter: 'inter',
+  'nb-architekt': 'nb-architekt',
 };
 
 export enum font {
-  INTER = 'inter-',
-  NB_ARCHITEKT = 'nbArchitekt',
+  INTER = 'inter',
+  NB_ARCHITEKT = 'nb-architekt',
 }
 
 export const _fontSize: Record<FontSizeTypes, StyleProp<TextStyle>> = {

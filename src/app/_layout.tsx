@@ -27,7 +27,7 @@ export default function RootLayout() {
     'inter-medium': require('../../assets/fonts/Inter-Medium.ttf'),
     'inter-semibold': require('../../assets/fonts/Inter-SemiBold.ttf'),
     'inter-bold': require('../../assets/fonts/Inter-Bold.ttf'),
-    nbArchitekt: require('../../assets/fonts/RoobertTRIAL.otf'),
+    'nb-architekt-regular': require('../../assets/fonts/NB-Architekt-Regular.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.

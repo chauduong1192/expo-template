@@ -7,14 +7,14 @@ import {
   type StyleProp,
 } from 'react-native';
 
-import { _fontFamily, _fontSize, _fontWeight, font } from './theme';
+import { _fontSize, _fontWeight, font } from './theme';
 import {
   type FontFamilyTypes,
   type FontSizeTypes,
   type FontWeightTypes,
 } from './types';
 
-const containDash = (str: string) => str.includes('-');
+import { convertHexToRGBA } from '@/utils/color';
 
 /**
  * Props for the Text component
@@ -34,6 +34,7 @@ export interface TextProps extends NativeTextProps {
   fontFamily?: FontFamilyTypes;
   fontWeight?: FontWeightTypes;
   style?: StyleProp<TextStyle>;
+  shadowText?: boolean;
 }
 
 export const Text = ({
@@ -42,24 +43,20 @@ export const Text = ({
   fontWeight = '400',
   children,
   style,
+  shadowText = false,
   ...props
 }: TextProps) => {
   const {
     theme: {
-      colors: { elements },
+      colors: {
+        elements: { midEm },
+        white,
+      },
     },
   } = useTheme();
 
-  let fontFam: string = fontFamily;
-  if (!containDash(fontFam)) {
-    fontFam =
-      _fontFamily[
-        fontFamily as Extract<FontFamilyTypes, 'inter' | 'nbArchitekt'>
-      ];
-  }
-
   const fontFamilyStyle = {
-    fontFamily: `${fontFam}${_fontWeight[fontWeight]}`,
+    fontFamily: `${fontFamily}-${_fontWeight[fontWeight]}`,
   };
 
   if (!children) return null;
@@ -69,8 +66,13 @@ export const Text = ({
       style={[
         _fontSize[size],
         fontFamilyStyle,
-        { color: elements.midEm },
+        { color: midEm },
         style,
+        shadowText && {
+          textShadowColor: convertHexToRGBA(white, 0.37),
+          textShadowOffset: { width: 0, height: 0 },
+          textShadowRadius: 4,
+        },
       ]}
       {...props}
     >

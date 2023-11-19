@@ -63,7 +63,11 @@ export const EmptyState = ({
       </Box>
       {children ?? (
         <VStack gap={8} justifyContent="center">
-          <Text size="l" style={{ textAlign: 'center' }}>
+          <Text
+            fontFamily="nb-architekt"
+            size="l"
+            style={{ textAlign: 'center', color: highEm }}
+          >
             {title}
           </Text>
           <Text size="s" style={{ textAlign: 'center', color: lowEm }}>

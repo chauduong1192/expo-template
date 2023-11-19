@@ -31,6 +31,14 @@ const tabBars = [
     ),
     tabBarBadge: 3,
   },
+  {
+    name: 'components',
+    href: '/components',
+    tabBarIcon: ({ color }: TabBarIconProps) => (
+      <GamePadIcon color={color} height={20} width={20} />
+    ),
+    tabBarBadge: 3,
+  },
 ];
 
 export default function TabLayout() {
@@ -38,9 +46,9 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      // screenOptions={{
-      //   headerShown: false,
-      // }}
+      screenOptions={{
+        headerShown: false,
+      }}
       tabBar={renderTabBar}
     >
       {tabBars.map(({ name, href, tabBarIcon, tabBarBadge }) => (

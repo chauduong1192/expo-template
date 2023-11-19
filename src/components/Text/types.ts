@@ -12,4 +12,4 @@ export type FontSizeTypes =
   | '2xl'
   | '3xl';
 
-export type FontFamilyTypes = font | 'inter' | 'nbArchitekt';
+export type FontFamilyTypes = font | 'inter' | 'nb-architekt';

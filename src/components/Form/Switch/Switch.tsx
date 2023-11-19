@@ -4,8 +4,9 @@ import {
   type SwitchProps as NativeSwitchProps,
 } from 'react-native-switch';
 
-import { Label, Description } from '@/components/Form';
+import { Description } from '@/components/Form/Description';
 import { type InputProps } from '@/components/Form/Input/types';
+import { Label } from '@/components/Form/Label';
 import { Box, HStack, VStack } from '@/components/Layout';
 import { BORDER_RADIUS_BASE } from '@/constants';
 
@@ -79,43 +80,3 @@ export const Switch = ({
     </HStack>
   );
 };
-
-// const useStyles = makeStyles(
-//   (
-//     {
-//       colors: {
-//         white,
-//         elements: { highEm },
-//         controls: { danger },
-//         border: { interactive },
-//       },
-//     },
-//     { error }: { error: boolean },
-//   ) => ({
-//     lineBottom: {
-//       borderRadius: 6,
-//       bottom: 0,
-//       height: 2,
-//       left: 0,
-//       right: 0,
-//       position: 'absolute',
-//     },
-//     lineMaskBottom: {
-//       zIndex: 0,
-//       right: 0,
-//       backgroundColor: interactive,
-//     },
-//     lineOverrideBottom: {
-//       zIndex: 1,
-//       backgroundColor: error ? danger : highEm,
-//       shadowColor: convertHexToRGBA(error ? danger : white, 0.45),
-//       shadowOffset: {
-//         width: 0,
-//         height: 0,
-//       },
-//       shadowRadius: 8,
-//       shadowOpacity: 1,
-//       elevation: 5,
-//     },
-//   }),
-// );

@@ -1,13 +1,11 @@
 import { KeyboardAvoidingView } from 'react-native';
 
-import {
-  CodeInputField,
-  Description,
-  HelperText,
-  Input,
-  Label,
-} from '@/components/Form';
+import { CodeInput } from '@/components/Form/CodeInput';
+import { Description } from '@/components/Form/Description';
+import { HelperText } from '@/components/Form/HelperText';
+import { Input } from '@/components/Form/Input';
 import { type InputProps } from '@/components/Form/Input/types';
+import { Label } from '@/components/Form/Label';
 import { VStack } from '@/components/Layout';
 
 /**
@@ -51,7 +49,7 @@ export const InputWithLabel = ({
         }}
       />
     ) : (
-      <CodeInputField
+      <CodeInput
         cellCount={cellCount}
         disabled={disabled}
         error={error}

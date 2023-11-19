@@ -2,10 +2,10 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { ArrowRightIcon } from '@/components/Icons';
 
-export default function AboutScreen() {
+export default function GameScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>About</Text>
+      <Text style={styles.title}>GameScreen</Text>
       <View style={styles.separator} />
       <ArrowRightIcon />
     </View>
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#0d0e13',
   },
   title: {
     fontSize: 20,

@@ -18,7 +18,7 @@ import { BORDER_RADIUS_BASE } from '@/constants';
 const DEFAULT_CELL_COUNT = 6;
 const DEFAULT_WIDTH = 52;
 
-interface CodeInputFieldProps {
+interface CodeInputProps {
   value: string;
   error?: boolean;
   onChangeText: (text: string) => void;
@@ -27,7 +27,7 @@ interface CodeInputFieldProps {
   disabled?: boolean;
 }
 
-export const CodeInputField = ({
+export const CodeInput = ({
   value,
   error,
   disabled,
@@ -35,7 +35,7 @@ export const CodeInputField = ({
   cellCount = DEFAULT_CELL_COUNT,
   isMasked = true,
   ...rest
-}: CodeInputFieldProps) => {
+}: CodeInputProps) => {
   const {
     theme: {
       colors: {
@@ -121,7 +121,7 @@ const useStyles = makeStyles(
         elements: { disabled: disableBg },
       },
     },
-    { disabled }: Pick<CodeInputFieldProps, 'disabled'>,
+    { disabled }: Pick<CodeInputProps, 'disabled'>,
   ) => ({
     cellContainer: {
       position: 'relative',

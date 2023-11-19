@@ -5,8 +5,7 @@ import { useToggle } from 'usehooks-ts';
 
 import { Button } from '@/components/Button';
 import { EmptyState } from '@/components/EmptyState';
-import { InputWithLabel, Switch } from '@/components/Form';
-import { Checkbox } from '@/components/Form/Checkbox';
+import { InputWithLabel, Checkbox } from '@/components/Form';
 import { PlusCircleIcon } from '@/components/Icons';
 import { HStack, VStack } from '@/components/Layout';
 import { Tabs } from '@/components/Tabs';
@@ -65,7 +64,7 @@ const tabs = [
   },
 ];
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   const [value, setValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
@@ -136,7 +135,7 @@ export default function TabOneScreen() {
             value={switchValue}
             onValueChange={toggle}
           />
-          <Switch
+          {/* <Switch
             description="Description goes here"
             // disabled
             label="Label"
@@ -144,7 +143,7 @@ export default function TabOneScreen() {
             onValueChange={toggle}
           />
           <Switch value={switchValue} onValueChange={toggle} />
-          <Switch disabled value={switchValue} onValueChange={toggle} />
+          <Switch disabled value={switchValue} onValueChange={toggle} /> */}
           {/* <Input color /> */}
           <InputWithLabel
             description="Description goes here"
@@ -390,7 +389,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#0d0e13',
   },
   title: {
     fontSize: 20,

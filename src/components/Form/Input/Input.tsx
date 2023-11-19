@@ -13,7 +13,8 @@ import {
 
 import { type InputProps } from './types';
 
-import { BottomBorder, InputAdornment } from '@/components/Form';
+import { BottomBorder } from '@/components/Form/BottomBorder';
+import { InputAdornment } from '@/components/Form/InputAdornment';
 import { BORDER_RADIUS_BASE } from '@/constants';
 
 export const Input = ({

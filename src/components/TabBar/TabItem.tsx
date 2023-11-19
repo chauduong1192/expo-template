@@ -2,15 +2,23 @@ import { type BottomTabBarProps } from '@react-navigation/bottom-tabs/lib/typesc
 import { type NavigationState } from '@react-navigation/native';
 import { useTheme } from '@rneui/themed';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import Animated, {
+  useAnimatedProps,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
+import { BadgeDot } from '@/components/BadgeDot';
 import { Box } from '@/components/Layout';
 import { Text } from '@/components/Text';
-import { BORDER_RADIUS_FULL } from '@/constants';
 
 export type TabBarIconProps = {
-  focused: boolean;
-  color: string;
-  size: number;
+  focused?: boolean;
+  color?: string;
+  size?: number;
+  animatedProps?: Partial<{
+    fill: string;
+  }>;
 };
 
 interface TabItemProps extends Omit<BottomTabBarProps, 'insets'> {
@@ -18,6 +26,8 @@ interface TabItemProps extends Omit<BottomTabBarProps, 'insets'> {
   index: number;
   onPress?: (index: number) => void;
 }
+
+const AnimatedText = Animated.createAnimatedComponent(Text);
 
 export const TabItem = ({
   state,
@@ -31,8 +41,6 @@ export const TabItem = ({
     theme: {
       colors: {
         elements: { lowEm, highEm },
-        base: { bgEmphasized },
-        controls: { danger },
       },
     },
   } = useTheme();
@@ -41,9 +49,21 @@ export const TabItem = ({
   const label = options.tabBarLabel ?? options.title ?? route.name;
 
   const isFocused = state.index === index;
+  const color = isFocused ? highEm : lowEm;
+  const animatedStyles = useAnimatedStyle(() => ({
+    color: withTiming(color, { duration: 200 }),
+  }));
+
+  const animatedProps = useAnimatedProps(() => ({
+    ...(index !== 2 && {
+      fill: withTiming(color, { duration: 200 }),
+    }),
+    ...(index === 2 && { stroke: withTiming(color, { duration: 200 }) }),
+  }));
 
   const onPress = () => {
     _onPress?.(index);
+    // colorAnimate.value = isFocused ? highEm : lowEm;
     const event = navigation.emit({
       type: 'tabPress',
       target: route.key,
@@ -84,41 +104,17 @@ export const TabItem = ({
           width={24}
         >
           {options?.tabBarIcon?.({
-            focused: isFocused,
-            color: isFocused ? highEm : lowEm,
-            size: 24,
-          })}
-          {options.tabBarBadge && (
-            <Box
-              alignItems="center"
-              backgroundColor={bgEmphasized}
-              borderRadius={BORDER_RADIUS_FULL}
-              height={8}
-              justifyContent="center"
-              position="absolute"
-              right={0}
-              top={0}
-              width={8}
-            >
-              <Box
-                backgroundColor={danger}
-                borderRadius={BORDER_RADIUS_FULL}
-                height={6}
-                width={6}
-              />
-            </Box>
-          )}
+            animatedProps,
+          } as any)}
+          {options.tabBarBadge && <BadgeDot />}
         </Box>
-        <Text
+        <AnimatedText
           fontWeight="500"
           size="xs"
-          style={{
-            color: isFocused ? highEm : lowEm,
-            textTransform: 'uppercase',
-          }}
+          style={[animatedStyles, { textTransform: 'uppercase' }]}
         >
           {label as string}
-        </Text>
+        </AnimatedText>
       </TouchableOpacity>
     </Box>
   );

@@ -3,6 +3,7 @@ import { createTheme } from '@rneui/themed';
 export const theme = createTheme({
   lightColors: {
     black: '#000000',
+    white: '#ffffff',
     greys: {
       0: '#0d0e13',
       50: '#111218',
@@ -58,6 +59,7 @@ export const theme = createTheme({
   },
   darkColors: {
     black: '#000000',
+    white: '#ffffff',
     greys: {
       0: '#0d0e13',
       50: '#111218',
@@ -88,6 +90,7 @@ export const theme = createTheme({
       separatorEmphasized: '#bbc0df14',
       interactiveHovered: '#232733',
       interactive: '#1F222D',
+      interactiveAlpha: '#acb5f324',
       emphasized: '#EBECEF',
     },
     controls: {
@@ -104,6 +107,9 @@ export const theme = createTheme({
       highEm: '#EBECEF',
       disabled: '#4B4E63',
       tagTransparent: '#11121880',
+    },
+    others: {
+      orange: '#F16445',
     },
     greyOverlap: '#58585a',
   },

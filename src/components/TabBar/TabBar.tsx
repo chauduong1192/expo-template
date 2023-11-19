@@ -3,7 +3,6 @@ import { useTheme } from '@rneui/themed';
 import React, { type ReactElement } from 'react';
 import { Dimensions } from 'react-native';
 import {
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -26,7 +25,7 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
     transform: [
       {
         translateX: withTiming(translateX.value, {
-          easing: Easing.elastic(1),
+          duration: 200,
         }),
       },
     ],
@@ -55,6 +54,7 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
       borderRadius={12}
       borderTopWidth={1}
       bottom={0}
+      overflow="hidden"
       paddingBottom={insets.bottom}
       position="absolute"
     >

@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { Text } from '@/components/Text';
 
-export default function HomeScreen() {
+export default function DiscoverScreen() {
   return (
     <ScreenContainer>
       <ScrollView
@@ -16,7 +16,7 @@ export default function HomeScreen() {
         }}
       >
         <Text fontFamily="nb-architekt" shadowText size="l">
-          home
+          Discover
         </Text>
       </ScrollView>
     </ScreenContainer>

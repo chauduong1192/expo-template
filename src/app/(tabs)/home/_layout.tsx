@@ -9,9 +9,10 @@ export default () => {
     return (
       <HeaderCustom
         {...props}
+        backButton={false}
         rightIcon={<GearSix />}
         rightPress={() => console.log('right press')}
-        title="NOTIFICATION"
+        title="Home"
       />
     );
   };

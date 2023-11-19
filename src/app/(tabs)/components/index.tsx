@@ -1,13 +1,15 @@
+import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useToggle } from 'usehooks-ts';
 
+import { BadgeDot } from '@/components/BadgeDot';
 import { Button } from '@/components/Button';
 import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Checkbox, Input, Switch } from '@/components/Form';
-import { PlusCircleIcon } from '@/components/Icons';
-import { HStack, VStack } from '@/components/Layout';
+import { BellIcon, PlusCircleIcon } from '@/components/Icons';
+import { Box, HStack, VStack } from '@/components/Layout';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
@@ -71,6 +73,14 @@ export default function ComponentsScreen() {
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
 
+  const {
+    theme: {
+      colors: {
+        elements: { lowEm },
+      },
+    },
+  } = useTheme();
+
   return (
     <ScreenContainer style={{ backgroundColor: '#0d0e13' }}>
       <ScrollView
@@ -83,6 +93,20 @@ export default function ComponentsScreen() {
         }}
       >
         <VStack gap={30}>
+          {/* Badge dot animation */}
+          <SectionComponent title="Badge Dot Animation">
+            <Box
+              alignItems="center"
+              height={24}
+              justifyContent="center"
+              position="relative"
+              width={24}
+            >
+              <BadgeDot style={{ right: 3 }} />
+              <BellIcon color={lowEm} height={24} width={24} />
+            </Box>
+          </SectionComponent>
+
           {/* Empty state component */}
           <SectionComponent title="Empty State">
             <EmptyState

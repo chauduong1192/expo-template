@@ -52,15 +52,13 @@ export const HeaderCustom = ({
       >
         {children ?? (
           <>
-            {backButton && (
-              <Box>
-                <Button
-                  iconLeft={<CareLeft />}
-                  variant="tertiary"
-                  onPress={navigation?.goBack}
-                />
-              </Box>
-            )}
+            <Box>
+              <Button
+                iconLeft={backButton && <CareLeft />}
+                variant="tertiary"
+                onPress={backButton ? navigation?.goBack : null}
+              />
+            </Box>
             <Text
               fontFamily="nb-architekt"
               shadowText

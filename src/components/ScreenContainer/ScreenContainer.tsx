@@ -12,13 +12,13 @@ export const ScreenContainer = ({ style, children }: ScreenContainerProps) => {
   const {
     theme: {
       colors: {
-        base: { bgAlternate },
+        base: { bg },
       },
     },
   } = useTheme();
 
   return (
-    <SafeAreaView style={[{ backgroundColor: bgAlternate, flex: 1 }]}>
+    <SafeAreaView style={[{ backgroundColor: bg, flex: 1 }]}>
       {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
       <Box
         flex={1}

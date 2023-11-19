@@ -1,5 +1,5 @@
 import { useTheme } from '@rneui/themed';
-import React from 'react';
+import React, { forwardRef, type Ref } from 'react';
 import {
   Text as NativeText,
   type TextProps as NativeTextProps,
@@ -35,48 +35,99 @@ export interface TextProps extends NativeTextProps {
   fontWeight?: FontWeightTypes;
   style?: StyleProp<TextStyle>;
   shadowText?: boolean;
+  // ref: any;
 }
 
-export const Text = ({
-  size = 's',
-  fontFamily = font.INTER,
-  fontWeight = '400',
-  children,
-  style,
-  shadowText = false,
-  ...props
-}: TextProps) => {
-  const {
-    theme: {
-      colors: {
-        elements: { midEm },
-        white,
-      },
-    },
-  } = useTheme();
-
-  const fontFamilyStyle = {
-    fontFamily: `${fontFamily}-${_fontWeight[fontWeight]}`,
-  };
-
-  if (!children) return null;
-
-  return (
-    <NativeText
-      style={[
-        _fontSize[size],
-        fontFamilyStyle,
-        { color: midEm },
-        style,
-        shadowText && {
-          textShadowColor: convertHexToRGBA(white, 0.37),
-          textShadowOffset: { width: 0, height: 0 },
-          textShadowRadius: 4,
+export const Text = forwardRef(
+  (
+    {
+      size = 's',
+      fontFamily = font.INTER,
+      fontWeight = '400',
+      children,
+      style,
+      shadowText = false,
+      ...props
+    }: TextProps,
+    ref: Ref<any>,
+  ) => {
+    const {
+      theme: {
+        colors: {
+          elements: { midEm },
+          white,
         },
-      ]}
-      {...props}
-    >
-      {children}
-    </NativeText>
-  );
-};
+      },
+    } = useTheme();
+
+    const fontFamilyStyle = {
+      fontFamily: `${fontFamily}-${_fontWeight[fontWeight]}`,
+    };
+
+    if (!children) return null;
+
+    return (
+      <NativeText
+        ref={ref}
+        style={[
+          _fontSize[size],
+          fontFamilyStyle,
+          { color: midEm },
+          style,
+          shadowText && {
+            textShadowColor: convertHexToRGBA(white, 0.37),
+            textShadowOffset: { width: 0, height: 0 },
+            textShadowRadius: 4,
+          },
+        ]}
+        {...props}
+      >
+        {children}
+      </NativeText>
+    );
+  },
+);
+
+// export const Text = ({
+//   size = 's',
+//   fontFamily = font.INTER,
+//   fontWeight = '400',
+//   children,
+//   style,
+//   shadowText = false,
+//   ...props
+// }: TextProps) => {
+//   const {
+//     theme: {
+//       colors: {
+//         elements: { midEm },
+//         white,
+//       },
+//     },
+//   } = useTheme();
+
+//   const fontFamilyStyle = {
+//     fontFamily: `${fontFamily}-${_fontWeight[fontWeight]}`,
+//   };
+
+//   if (!children) return null;
+
+//   return (
+//     <NativeText
+//       style={[
+//         _fontSize[size],
+//         fontFamilyStyle,
+//         { color: midEm },
+//         style,
+//         shadowText && {
+//           textShadowColor: convertHexToRGBA(white, 0.37),
+//           textShadowOffset: { width: 0, height: 0 },
+//           textShadowRadius: 4,
+//         },
+//       ]}
+//       {...props}
+//     >
+//       {children}
+//     </NativeText>
+//   );
+// };

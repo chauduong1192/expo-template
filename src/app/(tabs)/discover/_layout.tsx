@@ -1,9 +1,7 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from '@rneui/themed';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Stack } from 'expo-router';
 import { useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
 import Animated, {
   useSharedValue,
   withTiming,
@@ -13,12 +11,12 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 
+import { Avatar } from '@/components/Avatar';
 import { BadgeDot } from '@/components/BadgeDot';
 import { HeaderButton, HeaderCustom } from '@/components/HeaderCustom';
 import { BellIcon } from '@/components/Icons';
 import { Box } from '@/components/Layout';
 import { Text } from '@/components/Text';
-import { convertHexToRGBA } from '@/utils/color';
 
 const ANGLE = 10;
 const TIME = 100;
@@ -30,7 +28,6 @@ export default () => {
       colors: {
         white,
         elements: { lowEm },
-        others: { orange },
       },
     },
   } = useTheme();
@@ -58,34 +55,13 @@ export default () => {
       withTiming(0, { duration: TIME / 2, easing: EASING }),
     );
   }, []);
-  console.log('rotation.value', rotation.value);
 
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
     return (
       <HeaderCustom {...props}>
-        <Box
-          alignItems="center"
-          as={TouchableOpacity}
-          height={40}
-          justifyContent="center"
-          opacity={0.7}
-          width={40}
-        >
-          <LinearGradient
-            colors={[
-              convertHexToRGBA(orange, 0.9),
-              convertHexToRGBA(orange, 0.7),
-              convertHexToRGBA(orange, 0.5),
-            ]}
-            end={{ x: 1, y: 0 }}
-            start={{ x: 0, y: 0 }}
-            style={{
-              width: 24,
-              height: 24,
-              borderRadius: 2,
-            }}
-          />
-        </Box>
+        <HeaderButton>
+          <Avatar />
+        </HeaderButton>
         <Text
           fontFamily="nb-architekt"
           shadowText

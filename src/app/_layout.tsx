@@ -54,7 +54,7 @@ function RootLayoutNav() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <StatusBar />
+        <StatusBar style="auto" />
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />

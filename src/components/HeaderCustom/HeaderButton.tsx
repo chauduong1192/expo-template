@@ -17,9 +17,9 @@ export const HeaderButton = ({
       activeOpacity={ACTIVE_OPACITY}
       alignItems="center"
       as={TouchableOpacity}
-      height={40}
+      height={24}
       justifyContent="center"
-      width={40}
+      width={24}
       onPress={onPress}
     >
       {children}

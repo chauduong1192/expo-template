@@ -1,19 +1,32 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
+import { useTheme } from '@rneui/themed';
 import { Stack } from 'expo-router';
 
-import { HeaderCustom } from '@/components/HeaderCustom';
+import { Avatar } from '@/components/Avatar';
+import { HeaderButton, HeaderCustom } from '@/components/HeaderCustom';
 import { GearSix } from '@/components/Icons';
+import { Logo } from '@/components/Logo';
 
 export default () => {
+  const {
+    theme: {
+      colors: {
+        elements: { highEm },
+      },
+    },
+  } = useTheme();
+
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
     return (
-      <HeaderCustom
-        {...props}
-        backButton={false}
-        rightIcon={<GearSix height={24} width={24} />}
-        rightPress={() => console.log('right press')}
-        title="Home"
-      />
+      <HeaderCustom {...props}>
+        <HeaderButton>
+          <Avatar />
+        </HeaderButton>
+        <Logo />
+        <HeaderButton>
+          <GearSix color={highEm} height={24} width={24} />
+        </HeaderButton>
+      </HeaderCustom>
     );
   };
 

@@ -1,24 +1,15 @@
-import { ScrollView } from 'react-native-gesture-handler';
-
+import { VStack } from '@/components/Layout';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { Text } from '@/components/Text';
 
 export default function DiscoverScreen() {
   return (
     <ScreenContainer>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        style={{
-          paddingHorizontal: 20,
-          paddingVertical: 16,
-          marginBottom: 100,
-        }}
-      >
+      <VStack gap={30} paddingX={20} paddingY={16}>
         <Text fontFamily="nb-architekt" shadowText size="l">
           Discover
         </Text>
-      </ScrollView>
+      </VStack>
     </ScreenContainer>
   );
 }

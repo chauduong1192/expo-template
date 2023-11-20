@@ -5,7 +5,7 @@ import { HeaderCustom } from '@/components/HeaderCustom';
 
 export default () => {
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
-    return <HeaderCustom {...props} backButton={false} title="Components" />;
+    return <HeaderCustom {...props} title="Components" />;
   };
 
   return (

@@ -1,20 +1,19 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from '@rneui/themed';
-import React, { type ReactNode } from 'react';
-import { type ViewProps } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useMemo, type ReactNode } from 'react';
+import { SafeAreaView, type ViewProps } from 'react-native';
 
 import { HeaderButton } from './HeaderButton';
 
 import { CareLeft } from '@/components/Icons';
-import { Box, HStack, VStack } from '@/components/Layout';
+import { HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 import { cloneIcon } from '@/utils/icon';
 
 export interface HederCustomProps
   extends Partial<NativeStackHeaderProps>,
     ViewProps {
-  title?: string;
+  title?: ReactNode;
   rightIcon?: ReactNode;
   rightPress?: () => void;
   backButton?: boolean;
@@ -43,11 +42,25 @@ export const HeaderCustom = ({
       },
     },
   } = useTheme();
-  const insets = useSafeAreaInsets();
+
+  const renderTitle = useMemo(() => {
+    if (typeof title === 'string') {
+      return (
+        <Text
+          fontFamily="nb-architekt"
+          shadowText
+          size="m"
+          style={{ flex: 1, textAlign: 'center', color: white }}
+        >
+          {title}
+        </Text>
+      );
+    }
+    return title;
+  }, []);
 
   return (
-    <VStack backgroundColor={bgAlternate}>
-      <Box height={insets.top} />
+    <VStack as={SafeAreaView} backgroundColor={bgAlternate}>
       <HStack
         alignItems="center"
         backgroundColor={bgAlternate}
@@ -55,7 +68,7 @@ export const HeaderCustom = ({
         height={64}
         justifyContent="space-between"
         // not sure why styled can not read the paddingX or paddingLeft...
-        style={{ paddingHorizontal: 8 }}
+        style={{ paddingHorizontal: 16 }}
         {...props}
       >
         {children ?? (
@@ -63,14 +76,7 @@ export const HeaderCustom = ({
             <HeaderButton onPress={backButton ? navigation?.goBack : undefined}>
               {backButton && <CareLeft {...commonIconSize} color={highEm} />}
             </HeaderButton>
-            <Text
-              fontFamily="nb-architekt"
-              shadowText
-              size="m"
-              style={{ flex: 1, textAlign: 'center', color: white }}
-            >
-              {title}
-            </Text>
+            {renderTitle}
             <HeaderButton onPress={rightPress}>
               {cloneIcon(rightIcon, {
                 ...commonIconSize,

@@ -4,10 +4,12 @@ import React, { type ReactNode } from 'react';
 import { type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button } from '@/components/Button';
+import { HeaderButton } from './HeaderButton';
+
 import { CareLeft } from '@/components/Icons';
 import { Box, HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { cloneIcon } from '@/utils/icon';
 
 export interface HederCustomProps
   extends Partial<NativeStackHeaderProps>,
@@ -17,6 +19,11 @@ export interface HederCustomProps
   rightPress?: () => void;
   backButton?: boolean;
 }
+
+const commonIconSize = {
+  width: 24,
+  height: 24,
+};
 
 export const HeaderCustom = ({
   navigation,
@@ -31,6 +38,7 @@ export const HeaderCustom = ({
     theme: {
       colors: {
         white,
+        elements: { highEm },
         base: { bgAlternate },
       },
     },
@@ -52,13 +60,9 @@ export const HeaderCustom = ({
       >
         {children ?? (
           <>
-            <Box>
-              <Button
-                iconLeft={backButton && <CareLeft />}
-                variant="tertiary"
-                onPress={backButton ? navigation?.goBack : null}
-              />
-            </Box>
+            <HeaderButton onPress={backButton ? navigation?.goBack : undefined}>
+              {backButton && <CareLeft {...commonIconSize} color={highEm} />}
+            </HeaderButton>
             <Text
               fontFamily="nb-architekt"
               shadowText
@@ -67,13 +71,12 @@ export const HeaderCustom = ({
             >
               {title}
             </Text>
-            <Box>
-              <Button
-                iconLeft={rightIcon}
-                variant="tertiary"
-                onPress={rightPress}
-              />
-            </Box>
+            <HeaderButton onPress={rightPress}>
+              {cloneIcon(rightIcon, {
+                ...commonIconSize,
+                color: highEm,
+              })}
+            </HeaderButton>
           </>
         )}
       </HStack>

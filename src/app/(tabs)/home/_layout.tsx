@@ -10,7 +10,7 @@ export default () => {
       <HeaderCustom
         {...props}
         backButton={false}
-        rightIcon={<GearSix />}
+        rightIcon={<GearSix height={24} width={24} />}
         rightPress={() => console.log('right press')}
         title="Home"
       />

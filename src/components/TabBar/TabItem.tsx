@@ -1,7 +1,7 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs/lib/typescript/src/types';
 import { type NavigationState } from '@react-navigation/native';
 import { useTheme } from '@rneui/themed';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Animated, {
   useAnimatedProps,
   useAnimatedStyle,
@@ -85,13 +85,17 @@ export const TabItem = ({
 
   return (
     <Box flex={1} height={72}>
-      <TouchableOpacity
+      <Box
         accessibilityLabel={options.tabBarAccessibilityLabel}
         accessibilityRole="button"
         accessibilityState={{ selected: isFocused }}
         activeOpacity={1}
+        alignItems="center"
+        as={TouchableOpacity}
+        flex={1}
+        gap={6}
         key={index}
-        style={styles.tab}
+        paddingY={16}
         testID={options.tabBarTestID}
         onLongPress={onLongPress}
         onPress={onPress}
@@ -111,20 +115,11 @@ export const TabItem = ({
         <AnimatedText
           fontWeight="500"
           size="xs"
-          style={[animatedStyles, { textTransform: 'uppercase' }]}
+          style={[animatedStyles, { textTransform: 'capitalize' }]}
         >
           {label as string}
         </AnimatedText>
-      </TouchableOpacity>
+      </Box>
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  tab: {
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 16,
-    gap: 6,
-  },
-});

@@ -14,13 +14,15 @@ import { Box } from '../Layout';
 
 import { BORDER_RADIUS_FULL } from '@/constants';
 
-export interface BadgeDotProps extends ViewProps {}
+export interface BadgeDotProps extends ViewProps {
+  isAnimation?: boolean;
+}
 
 const ANGLE = 1;
 const TIME = 800;
 const EASING = Easing.elastic(1);
 
-export const BadgeDot = ({ ...props }: BadgeDotProps) => {
+export const BadgeDot = ({ isAnimation = true, ...props }: BadgeDotProps) => {
   const rotation = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -36,22 +38,24 @@ export const BadgeDot = ({ ...props }: BadgeDotProps) => {
   } = useTheme();
 
   useEffect(() => {
-    rotation.value = withSequence(
-      // deviate left to start from -ANGLE
-      withTiming(-ANGLE, { duration: TIME / 2, easing: EASING }),
-      // wobble between -ANGLE and ANGLE 7 times
-      withRepeat(
-        withTiming(ANGLE, {
-          duration: TIME,
-          easing: EASING,
-        }),
-        6,
-        true,
-      ),
-      // go back to 0 at the end
-      withTiming(0, { duration: TIME / 2, easing: EASING }),
-    );
-  }, []);
+    if (isAnimation) {
+      rotation.value = withSequence(
+        // deviate left to start from -ANGLE
+        withTiming(-ANGLE, { duration: TIME / 2, easing: EASING }),
+        // wobble between -ANGLE and ANGLE 7 times
+        withRepeat(
+          withTiming(ANGLE, {
+            duration: TIME,
+            easing: EASING,
+          }),
+          6,
+          true,
+        ),
+        // go back to 0 at the end
+        withTiming(0, { duration: TIME / 2, easing: EASING }),
+      );
+    }
+  }, [isAnimation]);
 
   return (
     <Box
@@ -65,7 +69,7 @@ export const BadgeDot = ({ ...props }: BadgeDotProps) => {
       position="absolute"
       right={-3}
       style={[animatedStyle, props.style]}
-      top={-2}
+      top={0}
       width={8}
       zIndex={1}
     >

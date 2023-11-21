@@ -3,8 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { type ViewProps } from 'react-native';
 
-import { Box } from '../Layout';
-
+import { Box } from '@/components/Layout';
 import { convertHexToRGBA } from '@/utils/color';
 
 export interface AvatarProps extends ViewProps {}

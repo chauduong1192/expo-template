@@ -10,8 +10,7 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 
-import { Box } from '../Layout';
-
+import { Box } from '@/components/Layout';
 import { BORDER_RADIUS_FULL } from '@/constants';
 
 export interface BadgeDotProps extends ViewProps {

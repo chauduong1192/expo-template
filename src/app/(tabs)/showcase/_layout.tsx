@@ -1,5 +1,5 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
-import { Stack } from 'expo-router';
+import { Stack } from 'expo-router/stack';
 
 import { HeaderCustom } from '@/components/HeaderCustom';
 

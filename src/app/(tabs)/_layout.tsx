@@ -62,8 +62,8 @@ const tabBars = [
   },
   // This route just for develop
   {
-    name: 'components',
-    href: '/components',
+    name: 'showcase',
+    href: '/showcase',
     tabBarIcon: ({ animatedProps }: TabBarIconProps) => (
       <Svg>
         <AnimatedPath

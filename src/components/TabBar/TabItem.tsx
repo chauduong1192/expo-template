@@ -24,7 +24,6 @@ export type TabBarIconProps = {
 interface TabItemProps extends Omit<BottomTabBarProps, 'insets'> {
   route: NavigationState['routes'][0];
   index: number;
-  onPress?: (index: number) => void;
 }
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -35,7 +34,6 @@ export const TabItem = ({
   navigation,
   route,
   index,
-  onPress: _onPress,
 }: TabItemProps) => {
   const {
     theme: {
@@ -46,9 +44,11 @@ export const TabItem = ({
   } = useTheme();
 
   const { options } = descriptors[route.key];
+
   const label = options.tabBarLabel ?? options.title ?? route.name;
 
   const isFocused = state.index === index;
+
   const color = isFocused ? highEm : lowEm;
   const animatedStyles = useAnimatedStyle(() => ({
     color: withTiming(color, { duration: 200 }),
@@ -62,8 +62,6 @@ export const TabItem = ({
   }));
 
   const onPress = () => {
-    _onPress?.(index);
-    // colorAnimate.value = isFocused ? highEm : lowEm;
     const event = navigation.emit({
       type: 'tabPress',
       target: route.key,

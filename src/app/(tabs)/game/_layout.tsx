@@ -7,7 +7,7 @@ import { HeaderButton, HeaderCustom } from '@/components/HeaderCustom';
 import { GearSix } from '@/components/Icons';
 import { Logo } from '@/components/Logo';
 
-export default function HomeLayout() {
+export default function GameLayout() {
   const {
     theme: {
       colors: {

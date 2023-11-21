@@ -9,13 +9,10 @@ export default function HomeScreen() {
     <ScreenContainer>
       <VStack gap={30} paddingX={20} paddingY={16}>
         <Text fontFamily="nb-architekt" shadowText size="l">
-          Home
+          Game
         </Text>
-        <Link href="/about">
-          <Text>About</Text>
-        </Link>
-        <Link href="/user/bacon">
-          <Text>View User</Text>
+        <Link href="/home">
+          <Text>Go to home page</Text>
         </Link>
       </VStack>
     </ScreenContainer>

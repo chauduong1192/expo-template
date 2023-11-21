@@ -1,6 +1,7 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
-import React, { type ReactElement } from 'react';
+import { usePathname } from 'expo-router';
+import React, { useEffect, type ReactElement } from 'react';
 import { Dimensions } from 'react-native';
 import {
   useAnimatedStyle,
@@ -20,6 +21,7 @@ interface TabBarProps extends BottomTabBarProps {
 const windowWidth = Dimensions.get('window').width;
 
 export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
+  const currentPathname = usePathname();
   const translateX = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [
@@ -43,9 +45,11 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
 
   const DEFAULT_TAB_ITEM_WIDTH = windowWidth / state.routes?.length;
 
-  const handlePress = (index: number) => {
-    translateX.value = DEFAULT_TAB_ITEM_WIDTH * index;
-  };
+  useEffect(() => {
+    if (state.routeNames.includes(currentPathname.replace('/', ''))) {
+      translateX.value = DEFAULT_TAB_ITEM_WIDTH * state.index;
+    }
+  }, [currentPathname]);
 
   return (
     <HStack
@@ -70,7 +74,6 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
           navigation={navigation}
           route={route}
           state={state}
-          onPress={handlePress}
         />
       ))}
     </HStack>

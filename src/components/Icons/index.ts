@@ -11,6 +11,7 @@ import HomeSimpleIcon from './home-simple.svg';
 import ListBulletsIcon from './list-bullets.svg';
 import LogoIcon from './logo.svg';
 import PlusCircleIcon from './plus-circle.svg';
+import ProfileDrip from './profile-drip.svg';
 import WarningCircleIcon from './warning-circle.svg';
 
 export {
@@ -27,5 +28,6 @@ export {
   ListBulletsIcon,
   LogoIcon,
   PlusCircleIcon,
+  ProfileDrip,
   WarningCircleIcon,
 };

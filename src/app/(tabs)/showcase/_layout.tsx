@@ -3,7 +3,7 @@ import { Stack } from 'expo-router/stack';
 
 import { HeaderCustom } from '@/components/HeaderCustom';
 
-export default () => {
+export default function ShowcaseLayout() {
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
     return <HeaderCustom {...props} title="Components" />;
   };
@@ -18,4 +18,4 @@ export default () => {
       />
     </Stack>
   );
-};
+}

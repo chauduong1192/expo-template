@@ -3,13 +3,9 @@ import { Tabs } from 'expo-router';
 import Animated from 'react-native-reanimated';
 import { Path, G } from 'react-native-svg';
 
-import { CompassIcon, GamePadIcon, HomeSimpleIcon } from '@/components/Icons';
 import { Svg } from '@/components/Icons/AnimatedIcons/Svg';
 import { TabBar } from '@/components/TabBar';
 import { type TabBarIconProps } from '@/components/TabBar/TabItem';
-
-export const TAB_NAME = ['Home', 'Discover', 'Game'];
-export const ICONS = [<HomeSimpleIcon />, <CompassIcon />, <GamePadIcon />];
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const tabBars = [
@@ -89,7 +85,13 @@ export default function TabLayout() {
         <Tabs.Screen
           key={name}
           name={name}
-          options={{ href, tabBarLabel: name, tabBarIcon, tabBarBadge }}
+          options={{
+            href,
+            tabBarLabel: name,
+            tabBarIcon,
+            tabBarBadge,
+            lazy: true,
+          }}
         />
       ))}
     </Tabs>

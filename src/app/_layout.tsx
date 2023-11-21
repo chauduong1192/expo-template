@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@rneui/themed';
 import { useFonts } from 'expo-font';
-import { Slot, SplashScreen } from 'expo-router';
+import { SplashScreen } from 'expo-router';
+import Stack from 'expo-router/stack';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
@@ -55,11 +56,13 @@ function RootLayoutNav() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <StatusBar style="auto" />
-        {/* <NavigationContainer>
+        <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        </Stack>
+        {/* <NavigationContainer>
         </NavigationContainer> */}
-        <Slot />
+        {/* <Slot /> */}
       </ThemeProvider>
     </SafeAreaProvider>
   );

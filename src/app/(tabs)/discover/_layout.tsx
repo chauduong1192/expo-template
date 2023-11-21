@@ -22,7 +22,7 @@ const ANGLE = 10;
 const TIME = 100;
 const EASING = Easing.elastic(1.5);
 
-export default () => {
+export default function DiscoverLayout() {
   const {
     theme: {
       colors: {
@@ -100,4 +100,4 @@ export default () => {
       />
     </Stack>
   );
-};
+}

@@ -57,7 +57,7 @@ export const HeaderCustom = ({
       );
     }
     return title;
-  }, []);
+  }, [title]);
 
   return (
     <VStack as={SafeAreaView} backgroundColor={bgAlternate}>

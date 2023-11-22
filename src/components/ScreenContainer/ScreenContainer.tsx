@@ -3,7 +3,7 @@ import { type PropsWithChildren } from 'react';
 import { SafeAreaView, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
-import { Box } from '@/components/Layout';
+import { Box } from '../Layout';
 
 interface ScreenContainerProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;

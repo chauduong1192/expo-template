@@ -9,9 +9,16 @@ import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Checkbox, Input, Switch } from '@/components/Form';
 import { BellIcon, PlusCircleIcon } from '@/components/Icons';
 import { Box, HStack, VStack } from '@/components/Layout';
+import {
+  Modal,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+} from '@/components/Modal';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
 import { SectionComponent } from '@/features/showcase/components';
+import { useModal } from '@/hooks';
 
 const tabs = [
   {
@@ -70,9 +77,35 @@ export const Showcase = () => {
       },
     },
   } = useTheme();
+  const { ref, onOpen, onClose } = useModal();
 
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
+      {/* Modal using bottom sheet */}
+      <SectionComponent title="Modal using bottom sheet">
+        <Button onPress={() => onOpen?.()}>Open modal</Button>
+        <Modal ref={ref}>
+          <ModalHeader title="Edit featured collectibles" onClose={onClose} />
+          <ModalContent>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+            <Text>modal content</Text>
+          </ModalContent>
+          <ModalFooter>
+            <Button variant="secondary" onPress={onClose}>
+              Cancel
+            </Button>
+            <Button fullWidth onPress={onClose}>
+              Purchase
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </SectionComponent>
+
       {/* Badge dot animation */}
       <SectionComponent title="Badge Dot Animation">
         <Box

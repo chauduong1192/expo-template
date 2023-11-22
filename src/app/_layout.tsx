@@ -1,3 +1,4 @@
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@rneui/themed';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
@@ -55,14 +56,13 @@ function RootLayoutNav() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <StatusBar style="auto" />
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        </Stack>
-        {/* <NavigationContainer>
-        </NavigationContainer> */}
-        {/* <Slot /> */}
+        <BottomSheetModalProvider>
+          <StatusBar style="auto" />
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          </Stack>
+        </BottomSheetModalProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );

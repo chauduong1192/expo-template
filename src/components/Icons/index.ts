@@ -3,6 +3,7 @@ import BellIcon from './bell.svg';
 import BorderIcon from './border.svg';
 import CareLeft from './care-left.svg';
 import CheckIcon from './check.svg';
+import CloseIcon from './close.svg';
 import CompassIcon from './compass.svg';
 import DotsThreeVertical from './dots-three-vertical.svg';
 import GamePadIcon from './game-pad.svg';
@@ -20,6 +21,7 @@ export {
   BorderIcon,
   CareLeft,
   CheckIcon,
+  CloseIcon,
   CompassIcon,
   DotsThreeVertical,
   GamePadIcon,

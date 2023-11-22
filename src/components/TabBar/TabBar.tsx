@@ -3,15 +3,15 @@ import { useTheme } from '@rneui/themed';
 import { usePathname } from 'expo-router';
 import React, { useEffect, type ReactElement } from 'react';
 import { Dimensions } from 'react-native';
-import {
+import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { BorderTopAnimated } from './BorderTopAnimated';
 import { TabItem } from './TabItem';
+import { BorderTopLight } from '../BorderTopLight';
 
 import { HStack } from '@/components/Layout';
 
@@ -62,10 +62,11 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
       paddingBottom={insets.bottom}
       position="absolute"
     >
-      <BorderTopAnimated
-        animatedStyles={animatedStyles}
-        defaultWidth={DEFAULT_TAB_ITEM_WIDTH}
-      />
+      {/* Border top light animated */}
+      <Animated.View style={animatedStyles}>
+        <BorderTopLight style={{ width: DEFAULT_TAB_ITEM_WIDTH }} />
+      </Animated.View>
+
       {state.routes.map((route, index) => (
         <TabItem
           descriptors={descriptors}

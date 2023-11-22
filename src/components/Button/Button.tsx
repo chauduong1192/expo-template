@@ -203,5 +203,6 @@ const styles = StyleSheet.create({
   },
   fullWidth: {
     width: '100%',
+    flex: 1,
   },
 });

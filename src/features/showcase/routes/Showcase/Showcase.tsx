@@ -8,6 +8,7 @@ import { BadgeDot } from '@/components/BadgeDot';
 import { Button } from '@/components/Button';
 import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Checkbox, Input, Switch } from '@/components/Form';
+import { InputSearch } from '@/components/Form/InputSearch';
 import { BellIcon, PlusCircleIcon } from '@/components/Icons';
 import { Box, HStack, VStack } from '@/components/Layout';
 import {
@@ -277,6 +278,14 @@ export const Showcase = () => {
           placeholder="Input Your Name"
           value={value}
           onChangeText={(text: string) => setValue(text)}
+        />
+      </SectionComponent>
+
+      {/* Input Search component */}
+      <SectionComponent title="Input Search">
+        <InputSearch
+          placeholder="Search something here..."
+          onSearchValue={(searchValue: string) => console.log(searchValue)}
         />
       </SectionComponent>
 

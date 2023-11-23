@@ -2,7 +2,6 @@ import { useTheme } from '@rneui/themed';
 import React, { type ReactElement } from 'react';
 import { type ViewProps } from 'react-native';
 
-import { BorderTopLight } from '@/components/BorderTopLight';
 import { Button } from '@/components/Button';
 import { CloseIcon } from '@/components/Icons';
 import { HStack } from '@/components/Layout';
@@ -33,7 +32,6 @@ export const ModalHeader = ({ title, onClose, ...props }: ModalHeaderProps) => {
       paddingY={16}
       {...props}
     >
-      <BorderTopLight style={{ opacity: 0.32 }} />
       {typeof title === 'string' ? (
         <Text
           fontFamily="nb-architekt"

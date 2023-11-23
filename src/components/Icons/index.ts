@@ -2,6 +2,7 @@ import ArrowRightIcon from './arrow-right.svg';
 import BellIcon from './bell.svg';
 import BorderIcon from './border.svg';
 import CareLeft from './care-left.svg';
+import CheckCircleIcon from './check-circle.svg';
 import CheckIcon from './check.svg';
 import CloseIcon from './close.svg';
 import CompassIcon from './compass.svg';
@@ -14,12 +15,14 @@ import LogoIcon from './logo.svg';
 import PlusCircleIcon from './plus-circle.svg';
 import ProfileDrip from './profile-drip.svg';
 import WarningCircleIcon from './warning-circle.svg';
+import WarningIcon from './warning.svg';
 
 export {
   ArrowRightIcon,
   BellIcon,
   BorderIcon,
   CareLeft,
+  CheckCircleIcon,
   CheckIcon,
   CloseIcon,
   CompassIcon,
@@ -32,4 +35,5 @@ export {
   PlusCircleIcon,
   ProfileDrip,
   WarningCircleIcon,
+  WarningIcon,
 };

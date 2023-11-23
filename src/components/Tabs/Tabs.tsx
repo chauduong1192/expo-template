@@ -63,7 +63,7 @@ export const Tabs = ({
 
   useEffect(() => {
     setIndex(indexActive);
-  }, []);
+  }, [indexActive]);
 
   const handleChangeIndex = (idx: number) => {
     onChangeIndex?.(idx);

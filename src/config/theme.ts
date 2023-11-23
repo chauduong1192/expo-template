@@ -54,6 +54,8 @@ export const theme = createTheme({
     },
     others: {
       orange: '#F16445',
+      green: '#23E766',
+      yellow: '#F3BE37',
     },
     greyOverlap: '#58585a',
   },
@@ -110,6 +112,8 @@ export const theme = createTheme({
     },
     others: {
       orange: '#F16445',
+      green: '#23E766',
+      yellow: '#F3BE37',
     },
     greyOverlap: '#58585a',
   },

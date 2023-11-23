@@ -1,5 +1,5 @@
 import { useTheme } from '@rneui/themed';
-import React, { type ReactNode } from 'react';
+import React, { type ReactElement } from 'react';
 import { type ViewProps } from 'react-native';
 
 import { BorderIcon, ListBulletsIcon } from '@/components/Icons';
@@ -7,8 +7,8 @@ import { Box, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 
 export interface EmptyStateProps extends ViewProps {
-  title: ReactNode;
-  description?: ReactNode;
+  title: string | ReactElement;
+  description?: string | ReactElement;
 }
 
 export const EmptyState = ({

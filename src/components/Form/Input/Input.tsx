@@ -54,7 +54,7 @@ export const Input = ({
     if (error) {
       offset.value = withTiming(0);
     }
-  }, [error]);
+  }, [error, offset]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{ translateX: offset.value }],

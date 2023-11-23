@@ -1,3 +1,4 @@
+import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -19,6 +20,7 @@ import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
 import { SectionComponent } from '@/features/showcase/components';
 import { useModal } from '@/hooks';
+import { useModalAlert } from '@/hooks/useModalAlert';
 
 const tabs = [
   {
@@ -79,6 +81,27 @@ export const Showcase = () => {
   } = useTheme();
   const { ref, onOpen, onClose } = useModal();
 
+  const {
+    renderModal: renderAlertModal,
+    onOpen: onOpenAlert,
+    // onClose: onCloseAlert,
+  } = useModalAlert({
+    title: 'Loading',
+    description: 'Loading content',
+    type: 'success',
+    actionButtons: [
+      {
+        label: 'Close',
+        variant: 'secondary',
+        closeOnPress: true,
+      },
+      {
+        label: 'Try again',
+        closeOnPress: true,
+      },
+    ],
+  });
+
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
       {/* Modal using bottom sheet */}
@@ -86,15 +109,27 @@ export const Showcase = () => {
         <Button onPress={() => onOpen?.()}>Open modal</Button>
         <Modal ref={ref}>
           <ModalHeader title="Edit featured collectibles" onClose={onClose} />
-          <ModalContent>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-            <Text>modal content</Text>
-          </ModalContent>
+          <BottomSheetScrollView>
+            <ModalContent>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+              <Text>modal content</Text>
+            </ModalContent>
+          </BottomSheetScrollView>
           <ModalFooter>
             <Button variant="secondary" onPress={onClose}>
               Cancel
@@ -104,6 +139,12 @@ export const Showcase = () => {
             </Button>
           </ModalFooter>
         </Modal>
+      </SectionComponent>
+
+      {/* useModalAlert */}
+      <SectionComponent title="useModalAlert">
+        <Button onPress={onOpenAlert}>Open modal alert</Button>
+        {renderAlertModal}
       </SectionComponent>
 
       {/* Badge dot animation */}

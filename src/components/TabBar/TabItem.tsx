@@ -11,6 +11,7 @@ import Animated, {
 import { BadgeDot } from '@/components/BadgeDot';
 import { Box } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { TAB_BOTTOM_HEIGHT } from '@/constants';
 
 export type TabBarIconProps = {
   focused?: boolean;
@@ -82,7 +83,7 @@ export const TabItem = ({
   };
 
   return (
-    <Box flex={1} height={72}>
+    <Box flex={1} height={TAB_BOTTOM_HEIGHT}>
       <Box
         accessibilityLabel={options.tabBarAccessibilityLabel}
         accessibilityRole="button"

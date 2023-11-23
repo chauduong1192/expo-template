@@ -60,6 +60,8 @@ declare module '@rneui/themed' {
     };
     others: {
       orange: string;
+      green: string;
+      yellow: string;
     };
     greyOverlap: string;
   }

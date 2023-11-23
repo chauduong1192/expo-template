@@ -5,6 +5,8 @@ import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { Box } from '../Layout';
 
+import { TAB_BOTTOM_HEIGHT } from '@/constants';
+
 interface ScreenContainerProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;
   withScroll?: boolean;
@@ -36,7 +38,7 @@ export const ScreenContainer = ({
         {...(withScroll && {
           as: Animated.ScrollView,
           contentContainerStyle: {
-            paddingBottom: 72,
+            paddingBottom: TAB_BOTTOM_HEIGHT,
           },
           showsHorizontalScrollIndicator: false,
           showsVerticalScrollIndicator: false,

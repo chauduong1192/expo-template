@@ -1,6 +1,6 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from '@rneui/themed';
-import React, { useMemo, type ReactNode } from 'react';
+import React, { useMemo, type ReactNode, type ReactElement } from 'react';
 import { SafeAreaView, type ViewProps } from 'react-native';
 
 import { HeaderButton } from './HeaderButton';
@@ -13,7 +13,7 @@ import { cloneIcon } from '@/utils/icon';
 export interface HederCustomProps
   extends Partial<NativeStackHeaderProps>,
     ViewProps {
-  title?: ReactNode;
+  title?: string | ReactElement;
   rightIcon?: ReactNode;
   rightPress?: () => void;
   backButton?: boolean;
@@ -57,7 +57,7 @@ export const HeaderCustom = ({
       );
     }
     return title;
-  }, [title]);
+  }, [title, white]);
 
   return (
     <VStack as={SafeAreaView} backgroundColor={bgAlternate}>

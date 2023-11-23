@@ -46,7 +46,7 @@ module.exports = {
         },
       },
     ],
-    'react-hooks/exhaustive-deps': 'off',
+    'react-hooks/exhaustive-deps': 2,
     'react-native/no-inline-styles': 0,
     'import/first': 'error',
     'no-bitwise': 'off',

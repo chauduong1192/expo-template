@@ -22,6 +22,7 @@ export const BorderTopLight = ({ ...props }: BorderTopLightProps) => {
           left: 0,
           height: 1,
           width: '100%',
+          zIndex: 1,
         },
         props.style,
       ]}

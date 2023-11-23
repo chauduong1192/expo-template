@@ -54,7 +54,7 @@ export const BadgeDot = ({ isAnimation = true, ...props }: BadgeDotProps) => {
         withTiming(0, { duration: TIME / 2, easing: EASING }),
       );
     }
-  }, [isAnimation]);
+  }, [isAnimation, rotation]);
 
   return (
     <Box

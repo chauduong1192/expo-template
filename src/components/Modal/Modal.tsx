@@ -1,16 +1,22 @@
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
-  BottomSheetView,
   type BottomSheetBackdropProps,
   type BottomSheetModalProps,
+  BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { type BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import { makeStyles } from '@rneui/themed';
-import React, { forwardRef, useCallback, type PropsWithChildren } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  type PropsWithChildren,
+  useMemo,
+} from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { BorderTopLight } from '@/components/BorderTopLight';
 import { BORDER_RADIUS_BASE } from '@/constants';
 
 export interface ModalProps extends Omit<BottomSheetModalProps, 'snapPoints'> {
@@ -56,14 +62,20 @@ export const Modal = forwardRef<
       [],
     );
 
+    const initialSnapPoints = useMemo(() => ['50%'], []);
+
     return (
       <BottomSheetModal
         backdropComponent={renderBackdrop}
         backgroundStyle={styles.containerBackground}
+        bottomInset={insets.bottom}
+        detached
+        enableOverDrag={false}
+        enablePanDownToClose
         handleIndicatorStyle={styles.indicator}
         handleStyle={styles.indicator}
         ref={ref}
-        snapPoints={props.snapPoints ?? ['50%', '45%']}
+        snapPoints={props.snapPoints ?? initialSnapPoints}
         style={styles.container}
         topInset={insets.top}
         onChange={handleOnChange}
@@ -72,7 +84,10 @@ export const Modal = forwardRef<
       >
         <BottomSheetView>
           <View style={styles.outerContainer}>
-            <View style={styles.innerContainer}>{children}</View>
+            <View style={styles.innerContainer}>
+              <BorderTopLight style={{ opacity: 0.32 }} />
+              {children}
+            </View>
           </View>
         </BottomSheetView>
       </BottomSheetModal>
@@ -111,6 +126,7 @@ const useStyles = makeStyles(
       height: '100%',
       width: '100%',
       overflow: 'hidden',
+      position: 'relative',
     },
   }),
 );

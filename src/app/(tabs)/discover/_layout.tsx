@@ -54,7 +54,7 @@ export default function DiscoverLayout() {
       // go back to 0 at the end
       withTiming(0, { duration: TIME / 2, easing: EASING }),
     );
-  }, []);
+  }, [rotation]);
 
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
     return (
@@ -80,9 +80,7 @@ export default function DiscoverLayout() {
             style={animatedStyle}
             width={24}
           >
-            {rotation.value === 0 && (
-              <BadgeDot isAnimation={false} style={{ right: 3 }} />
-            )}
+            <BadgeDot isAnimation={false} style={{ right: 3 }} />
             <BellIcon color={lowEm} height={24} width={24} />
           </Box>
         </HeaderButton>

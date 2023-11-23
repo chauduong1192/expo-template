@@ -49,7 +49,13 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
     if (state.routeNames.includes(currentPathname.replace('/', ''))) {
       translateX.value = DEFAULT_TAB_ITEM_WIDTH * state.index;
     }
-  }, [currentPathname]);
+  }, [
+    DEFAULT_TAB_ITEM_WIDTH,
+    currentPathname,
+    state.index,
+    state.routeNames,
+    translateX,
+  ]);
 
   return (
     <HStack

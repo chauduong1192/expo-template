@@ -1,6 +1,7 @@
 import { useTheme } from '@rneui/themed';
 import { type ReactElement, useMemo } from 'react';
-import { ActivityIndicator, Image, type ViewProps } from 'react-native';
+import { ActivityIndicator, type ViewProps } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { useModal } from './useModal';
 
@@ -97,9 +98,13 @@ export const useModalAlert = ({
     );
   }, [actionButtons, onClose, onDismiss]);
 
-  const renderModal = (() => (
-    <Modal ref={ref} snapPoints={['25%']}>
-      <Image
+  const renderSuccessImage = useMemo(() => {
+    if (type !== 'success') {
+      return null;
+    }
+    return (
+      <Animated.Image
+        entering={FadeIn.duration(1000)}
         resizeMode="cover"
         source={require('../../assets/images/shape.png')}
         style={{
@@ -112,6 +117,12 @@ export const useModalAlert = ({
           height: '100%',
         }}
       />
+    );
+  }, [type]);
+
+  const renderModal = (() => (
+    <Modal ref={ref} snapPoints={['25%']}>
+      {renderSuccessImage}
       <ModalContent
         style={{
           paddingTop: 32,

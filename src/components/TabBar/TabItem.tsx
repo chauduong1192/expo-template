@@ -1,10 +1,14 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs/lib/typescript/src/types';
 import { type NavigationState } from '@react-navigation/native';
 import { useTheme } from '@rneui/themed';
+import { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Animated, {
+  createAnimatedPropAdapter,
+  processColor,
   useAnimatedProps,
   useAnimatedStyle,
+  useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 
@@ -29,6 +33,18 @@ interface TabItemProps extends Omit<BottomTabBarProps, 'insets'> {
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
+const adapter = createAnimatedPropAdapter(
+  (props: any) => {
+    if (Object.keys(props).includes('fill')) {
+      props.fill = { type: 0, payload: processColor(props.fill) };
+    }
+    if (Object.keys(props).includes('stroke')) {
+      props.stroke = { type: 0, payload: processColor(props.stroke) };
+    }
+  },
+  ['fill', 'stroke'],
+);
+
 export const TabItem = ({
   state,
   descriptors,
@@ -50,17 +66,30 @@ export const TabItem = ({
 
   const isFocused = state.index === index;
 
-  const color = isFocused ? highEm : lowEm;
+  const color = useSharedValue('red');
+
   const animatedStyles = useAnimatedStyle(() => ({
-    color: withTiming(color, { duration: 200 }),
+    color: color.value,
   }));
 
-  const animatedProps = useAnimatedProps(() => ({
-    ...(index !== 2 && {
-      fill: withTiming(color, { duration: 200 }),
+  const animatedProps = useAnimatedProps(
+    () => ({
+      ...(index !== 2 && {
+        fill: color.value,
+      }),
+      ...(index === 2 && {
+        stroke: color.value,
+      }),
     }),
-    ...(index === 2 && { stroke: withTiming(color, { duration: 200 }) }),
-  }));
+    [],
+    adapter,
+  );
+
+  useEffect(() => {
+    color.value = withTiming(isFocused ? highEm : lowEm, {
+      duration: 200,
+    });
+  }, [color, highEm, isFocused, lowEm]);
 
   const onPress = () => {
     const event = navigation.emit({

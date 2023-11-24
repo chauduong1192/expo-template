@@ -61,7 +61,8 @@ export const TabBar = ({ state, descriptors, navigation }: TabBarProps) => {
     <HStack
       backgroundColor={bgEmphasized}
       borderColor={interactiveHovered}
-      borderRadius={12}
+      borderTopLeftRadius={12}
+      borderTopRightRadius={12}
       borderTopWidth={1}
       bottom={0}
       overflow="hidden"

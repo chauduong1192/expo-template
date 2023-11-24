@@ -1,12 +1,13 @@
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from '@rneui/themed';
 import React, { useMemo, type ReactNode, type ReactElement } from 'react';
-import { SafeAreaView, type ViewProps } from 'react-native';
+import { type ViewProps } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { HeaderButton } from './HeaderButton';
 
 import { CareLeft } from '@/components/Icons';
-import { HStack, VStack } from '@/components/Layout';
+import { Box, HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 import { cloneIcon } from '@/utils/icon';
 
@@ -59,8 +60,11 @@ export const HeaderCustom = ({
     return title;
   }, [title, white]);
 
+  const insets = useSafeAreaInsets();
+
   return (
-    <VStack as={SafeAreaView} backgroundColor={bgAlternate}>
+    <VStack backgroundColor={bgAlternate}>
+      <Box height={insets.top} />
       <HStack
         alignItems="center"
         backgroundColor={bgAlternate}

@@ -8,6 +8,9 @@ import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+// Adding this to resolve react lazy loading https://github.com/expo/expo/issues/23570
+import '@expo/metro-runtime';
+
 import { theme } from '@/config/theme';
 
 export {

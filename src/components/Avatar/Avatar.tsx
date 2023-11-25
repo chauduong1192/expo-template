@@ -8,7 +8,7 @@ import { convertHexToRGBA } from '@/utils/color';
 
 export interface AvatarProps extends ViewProps {}
 
-export const Avatar = ({ ...props }: AvatarProps) => {
+export const Avatar = ({ style, ...props }: AvatarProps) => {
   const {
     theme: {
       colors: {
@@ -32,11 +32,14 @@ export const Avatar = ({ ...props }: AvatarProps) => {
         ]}
         end={{ x: 1, y: 0 }}
         start={{ x: 0, y: 0 }}
-        style={{
-          width: 24,
-          height: 24,
-          borderRadius: 2,
-        }}
+        style={[
+          {
+            width: 24,
+            height: 24,
+            borderRadius: 2,
+          },
+          style,
+        ]}
       />
     </Box>
   );

@@ -10,7 +10,7 @@ import { Text } from '@/components/Text';
 
 export default function NotFoundScreen() {
   const renderHeaderCustom = (props: NativeStackHeaderProps) => {
-    return <HeaderCustom {...props} title="Oops!" />;
+    return <HeaderCustom {...props} />;
   };
 
   return (

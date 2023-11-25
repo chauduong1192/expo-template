@@ -1,5 +1,5 @@
 import { type BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Tabs } from 'expo-router';
+import { Tabs } from 'expo-router/tabs';
 import Animated from 'react-native-reanimated';
 import { Path, G } from 'react-native-svg';
 

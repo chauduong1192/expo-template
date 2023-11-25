@@ -21,7 +21,7 @@ export const Badge = ({
 
   return (
     <Box {...props} style={[styles?.container, style]}>
-      <Text size="xs" style={styles.label}>
+      <Text fontFamily="nb-architekt" size="xs" style={styles.label}>
         {children}
       </Text>
     </Box>

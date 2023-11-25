@@ -1,6 +1,7 @@
-import { type NativeStackHeaderProps } from '@react-navigation/native-stack';
+import { type DrawerHeaderProps } from '@react-navigation/drawer';
 import { useTheme } from '@rneui/themed';
 import { Stack } from 'expo-router';
+import Drawer from 'expo-router/drawer';
 import { useEffect } from 'react';
 import Animated, {
   useSharedValue,
@@ -56,10 +57,10 @@ export default function DiscoverLayout() {
     );
   }, [rotation]);
 
-  const renderHeaderCustom = (props: NativeStackHeaderProps) => {
+  const renderHeaderCustom = (props: DrawerHeaderProps) => {
     return (
-      <HeaderCustom {...props}>
-        <HeaderButton>
+      <HeaderCustom>
+        <HeaderButton onPress={props.navigation.toggleDrawer}>
           <Avatar />
         </HeaderButton>
         <Text
@@ -90,7 +91,7 @@ export default function DiscoverLayout() {
 
   return (
     <Stack>
-      <Stack.Screen
+      <Drawer.Screen
         name="index"
         options={{
           header: renderHeaderCustom,

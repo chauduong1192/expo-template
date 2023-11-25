@@ -7,8 +7,10 @@ import CheckIcon from './check.svg';
 import CloseIcon from './close.svg';
 import CompassIcon from './compass.svg';
 import DotsThreeVertical from './dots-three-vertical.svg';
+import DropIcon from './drop.svg';
 import GamePadIcon from './game-pad.svg';
 import GearSix from './gear-six.svg';
+import GiftIcon from './gift.svg';
 import HomeSimpleIcon from './home-simple.svg';
 import ListBulletsIcon from './list-bullets.svg';
 import LogoIcon from './logo.svg';
@@ -28,8 +30,10 @@ export {
   CloseIcon,
   CompassIcon,
   DotsThreeVertical,
+  DropIcon,
   GamePadIcon,
   GearSix,
+  GiftIcon,
   HomeSimpleIcon,
   ListBulletsIcon,
   LogoIcon,

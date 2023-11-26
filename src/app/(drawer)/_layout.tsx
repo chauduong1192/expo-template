@@ -26,20 +26,12 @@ export default function DrawerLayout() {
         drawerStyle: { backgroundColor: bgAlternate, width: 330 },
       }}
     >
-      <Drawer.Screen
-        name="(tabs)"
-        options={{
-          drawerLabel: 'Home',
-          title: 'Home',
-        }}
-      />
-      <Drawer.Screen
-        name="setting"
-        options={{
-          drawerLabel: 'Setting',
-          title: 'Setting',
-        }}
-      />
+      <Drawer.Screen name="(tabs)" />
+      <Drawer.Screen name="settings" />
+      <Drawer.Screen name="profile" />
+      <Drawer.Screen name="invites" />
+      <Drawer.Screen name="my-leaderboards" />
+      <Drawer.Screen name="vault" />
     </Drawer>
   );
 }

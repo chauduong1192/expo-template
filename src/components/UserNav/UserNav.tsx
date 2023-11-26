@@ -3,10 +3,20 @@ import { useTheme } from '@rneui/themed';
 import React from 'react';
 import { type ViewProps } from 'react-native';
 
+import { NavItem, type NavItemProps } from './NavItem';
+
 import { Avatar } from '@/components/Avatar';
-import { Badge } from '@/components/Badge';
 import { Button } from '@/components/Button';
-import { DropIcon, GiftIcon } from '@/components/Icons';
+import {
+  CrownSimpleIcon,
+  DropIcon,
+  GearSix,
+  GiftIcon,
+  PlusIcon,
+  SignOutIcon,
+  UserIcon,
+  VaultIcon,
+} from '@/components/Icons';
 import { Box, HStack, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 
@@ -14,12 +24,41 @@ export interface UserNavProps
   extends Partial<DrawerContentComponentProps>,
     ViewProps {}
 
+const navItems = [
+  {
+    label: 'Profile',
+    href: '/(drawer)/profile',
+    icon: <UserIcon />,
+  },
+  {
+    label: 'Vault',
+    href: '/(drawer)/vault',
+    icon: <VaultIcon />,
+  },
+  {
+    label: 'Invites',
+    href: '/(drawer)/invites',
+    icon: <PlusIcon />,
+    badge: 3,
+  },
+  {
+    label: 'My leaderboards',
+    href: '/(drawer)/my-leaderboards',
+    icon: <CrownSimpleIcon />,
+  },
+  {
+    label: 'Settings',
+    href: '/(drawer)/settings',
+    icon: <GearSix />,
+  },
+] as NavItemProps[];
+
 export const UserNav = ({ ...props }: UserNavProps) => {
   const {
     theme: {
       colors: {
         base: { bgEmphasized },
-        elements: { highEm, midEm },
+        elements: { highEm },
         border: { separatorEmphasized },
         surface: { floating },
       },
@@ -99,7 +138,6 @@ export const UserNav = ({ ...props }: UserNavProps) => {
           </VStack>
         </HStack>
       </VStack>
-
       {/* Droplets  */}
       <VStack backgroundColor={bgEmphasized} borderRadius={6} padding={16}>
         <HStack alignItems="center" gap={12} mb={12}>
@@ -135,36 +173,17 @@ export const UserNav = ({ ...props }: UserNavProps) => {
           Learn more
         </Button>
       </VStack>
-
       <VStack flex={1} gap={2}>
-        <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-          <GiftIcon color={midEm} height={20} width={20} />
-          <Text size="s">Profile</Text>
-        </HStack>
-        <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-          <GiftIcon color={midEm} height={20} width={20} />
-          <Text size="s">Vault</Text>
-        </HStack>
-        <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-          <GiftIcon color={midEm} height={20} width={20} />
-          <Text size="s" style={{ flex: 1 }}>
-            Invites
-          </Text>
-          <Badge emphasis="high">2</Badge>
-        </HStack>
-        <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-          <GiftIcon color={midEm} height={20} width={20} />
-          <Text size="s">My leaderboards</Text>
-        </HStack>
-        <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-          <GiftIcon color={midEm} height={20} width={20} />
-          <Text size="s">Settings</Text>
-        </HStack>
+        {navItems.map((item, idx) => (
+          <NavItem key={idx} {...item} />
+        ))}
       </VStack>
-      <HStack alignItems="center" gap={12} paddingX={2} paddingY={12}>
-        <GiftIcon color={midEm} height={20} width={20} />
-        <Text size="s">Logout</Text>
-      </HStack>
+
+      <NavItem
+        icon={<SignOutIcon />}
+        label="Logout"
+        onPress={() => console.log('call logout api')}
+      />
     </VStack>
   );
 };

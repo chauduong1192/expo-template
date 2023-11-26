@@ -1,7 +1,8 @@
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import Popover, { PopoverPlacement } from 'react-native-popover-view';
 import { useToggle } from 'usehooks-ts';
 
 import { BadgeDot } from '@/components/BadgeDot';
@@ -73,6 +74,8 @@ export const Showcase = () => {
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
 
+  const [showPopover, setShowPopover] = useState(false);
+
   const {
     theme: {
       colors: {
@@ -105,6 +108,24 @@ export const Showcase = () => {
 
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
+      {/* Popover */}
+      <SectionComponent title="Popover">
+        <Popover
+          from={
+            <TouchableOpacity onPress={() => setShowPopover(true)}>
+              <Text>Press here to open popover!</Text>
+            </TouchableOpacity>
+          }
+          isVisible={showPopover}
+          placement={PopoverPlacement.TOP}
+          onRequestClose={() => setShowPopover(false)}
+        >
+          <Text>
+            This popover will be dismissed automatically after 2 seconds
+          </Text>
+        </Popover>
+      </SectionComponent>
+
       {/* Modal using bottom sheet */}
       <SectionComponent title="Modal using bottom sheet">
         <Button onPress={() => onOpen?.()}>Open modal</Button>

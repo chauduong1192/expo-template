@@ -18,22 +18,19 @@ export const Popover = ({ children, from, ...props }: PopoverProps) => {
   const insets = useSafeAreaInsets();
   return (
     <_Popover
+      animationConfig={{
+        duration: 300,
+      }}
       arrowSize={{
         width: 0,
         height: 0,
       }}
       backgroundStyle={styles.backdrop}
-      debug
       displayAreaInsets={insets}
       from={
         <TouchableOpacity
           activeOpacity={ACTIVE_OPACITY}
-          style={{
-            alignSelf: 'flex-start',
-            margin: 0,
-            padding: 0,
-            overflow: 'hidden',
-          }}
+          style={styles.fromContainer}
           onPress={() => setShowPopover(true)}
         >
           {from as ReactNode}
@@ -68,6 +65,12 @@ const useStyles = makeStyles(
     },
     backdrop: {
       backgroundColor: 'transparent',
+    },
+    fromContainer: {
+      alignSelf: 'flex-start',
+      margin: 0,
+      padding: 0,
+      overflow: 'hidden',
     },
   }),
 );

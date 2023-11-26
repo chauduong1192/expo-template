@@ -1,8 +1,8 @@
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import Popover, { PopoverPlacement } from 'react-native-popover-view';
+import { View } from 'react-native';
+import { PopoverPlacement } from 'react-native-popover-view';
 import { useToggle } from 'usehooks-ts';
 
 import { BadgeDot } from '@/components/BadgeDot';
@@ -18,6 +18,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from '@/components/Modal';
+import { Popover } from '@/components/Popover';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
 import { SectionComponent } from '@/features/showcase/components';
@@ -74,8 +75,6 @@ export const Showcase = () => {
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
 
-  const [showPopover, setShowPopover] = useState(false);
-
   const {
     theme: {
       colors: {
@@ -110,22 +109,17 @@ export const Showcase = () => {
     <VStack gap={30} paddingX={20} paddingY={16}>
       {/* Popover */}
       <SectionComponent title="Popover">
-        <Popover
-          from={
-            <TouchableOpacity onPress={() => setShowPopover(true)}>
-              <Text>Press here to open popover!</Text>
-            </TouchableOpacity>
-          }
-          isVisible={showPopover}
-          placement={PopoverPlacement.TOP}
-          onRequestClose={() => setShowPopover(false)}
-        >
-          <Text>
-            This popover will be dismissed automatically after 2 seconds
-          </Text>
-        </Popover>
+        <Box>
+          <Popover
+            from={<Text>Click me to open popover</Text>}
+            placement={PopoverPlacement.BOTTOM}
+          >
+            <Box minHeight={200} minWidth={200} padding={2}>
+              <Text>popover content</Text>
+            </Box>
+          </Popover>
+        </Box>
       </SectionComponent>
-
       {/* Modal using bottom sheet */}
       <SectionComponent title="Modal using bottom sheet">
         <Button onPress={() => onOpen?.()}>Open modal</Button>

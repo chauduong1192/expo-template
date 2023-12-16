@@ -40,6 +40,12 @@ Runs the app in the development mode with android emulator
 
 When run, it will execute all test files and report back on how many tests passed and failed.
 
+### Generate component or feature
+
+##### `yarn generate:component`
+
+##### `yarn generate:feature`
+
 ### Deployment
 
 Deploy and serve the applications and assets over a EAS of expo for best delivery and performance.

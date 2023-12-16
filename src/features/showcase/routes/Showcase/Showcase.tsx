@@ -1,4 +1,5 @@
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { Skeleton } from '@rneui/base';
 import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -107,6 +108,18 @@ export const Showcase = () => {
 
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
+      {/* Skeleton */}
+      <SectionComponent title="Skeleton">
+        <Skeleton height={50} width="auto" />
+        <HStack gap={8}>
+          <Skeleton circle height={50} width={50} />
+          <VStack flex={1} justifyContent="space-between">
+            <Skeleton height={20} width="100%" />
+            <Skeleton height={20} width="50%" />
+          </VStack>
+        </HStack>
+      </SectionComponent>
+
       {/* Popover */}
       <SectionComponent title="Popover">
         <Box>
@@ -120,6 +133,7 @@ export const Showcase = () => {
           </Popover>
         </Box>
       </SectionComponent>
+
       {/* Modal using bottom sheet */}
       <SectionComponent title="Modal using bottom sheet">
         <Button onPress={() => onOpen?.()}>Open modal</Button>

@@ -13,6 +13,8 @@ assets                # assets folder can contain all the static files such as i
 |
 src
 |
++-- __tests__         # all the test files.
+|
 +-- app               # all the screens in the project will be in the app folder.
 |
 +-- components        # shared components used across the entire application
@@ -30,8 +32,6 @@ src
 +-- providers         # all of the application providers
 |
 +-- stores            # global state stores
-|
-+-- test              # test utilities and mock server
 |
 +-- types             # base types used across the application
 |

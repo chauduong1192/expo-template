@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { Skeleton } from '@rneui/base';
 import { useTheme } from '@rneui/themed';

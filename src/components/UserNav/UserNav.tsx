@@ -182,6 +182,7 @@ export const UserNav = ({ ...props }: UserNavProps) => {
       <NavItem
         icon={<SignOutIcon />}
         label="Logout"
+        // eslint-disable-next-line no-console
         onPress={() => console.log('call logout api')}
       />
     </VStack>

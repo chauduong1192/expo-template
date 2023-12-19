@@ -11,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 // Adding this to resolve react lazy loading https://github.com/expo/expo/issues/23570
 import '@expo/metro-runtime';
 
+import { EXPO_PUBLIC_STORYBOOK_ENABLED } from '@/config';
 import { theme } from '@/config/theme';
 
 export {
@@ -26,7 +27,7 @@ export const unstable_settings = {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function RootLayout() {
   const [fontsLoaded, error] = useFonts({
     'inter-regular': require('../../assets/fonts/Inter-Regular.ttf'),
     'inter-medium': require('../../assets/fonts/Inter-Medium.ttf'),
@@ -70,3 +71,11 @@ function RootLayoutNav() {
     </SafeAreaProvider>
   );
 }
+
+let AppEntryPoint = RootLayout;
+
+if (EXPO_PUBLIC_STORYBOOK_ENABLED === 'true') {
+  AppEntryPoint = require('../../.ondevice').default;
+}
+
+export default AppEntryPoint;

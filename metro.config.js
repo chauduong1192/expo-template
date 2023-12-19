@@ -16,6 +16,7 @@ module.exports = (() => {
   };
   config.resolver = {
     ...resolver,
+    resolverMainFields: ['sbmodern', ...config.resolver.resolverMainFields],
     assetExts: resolver.assetExts.filter((ext) => ext !== 'svg'),
     sourceExts: [...resolver.sourceExts, 'svg'],
   };

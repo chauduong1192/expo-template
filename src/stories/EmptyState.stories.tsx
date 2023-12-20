@@ -4,7 +4,7 @@ import {
 } from '@storybook/react-native';
 import * as React from 'react';
 
-import { EmptyState } from './EmptyState';
+import { EmptyState } from '@/components/EmptyState';
 
 const EmptyStateMeta: ComponentMeta<typeof EmptyState> = {
   title: 'EmptyState',
@@ -20,4 +20,4 @@ export default EmptyStateMeta;
 
 type EmptyStateStory = ComponentStory<typeof EmptyState>;
 
-export const Basic: EmptyStateStory = (args) => <EmptyState {...args} />;
+export const Default: EmptyStateStory = (args) => <EmptyState {...args} />;

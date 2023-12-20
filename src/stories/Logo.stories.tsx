@@ -4,7 +4,7 @@ import {
 } from '@storybook/react-native';
 import React from 'react';
 
-import { Logo } from './Logo';
+import { Logo } from '@/components/Logo';
 
 const LogoMeta: ComponentMeta<typeof Logo> = {
   title: 'Logo',
@@ -15,4 +15,4 @@ export default LogoMeta;
 
 type LogoStory = ComponentStory<typeof Logo>;
 
-export const Basic: LogoStory = (args) => <Logo {...args} />;
+export const Default: LogoStory = (args) => <Logo {...args} />;

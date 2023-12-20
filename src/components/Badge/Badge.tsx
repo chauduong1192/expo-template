@@ -41,8 +41,8 @@ const useStyles = makeStyles(
     { emphasis }: Pick<BadgeProps, 'emphasis'>,
   ) => ({
     container: {
-      width: 20,
-      height: 20,
+      minWidth: 20,
+      minHeight: 20,
       borderRadius: 2,
       justifyContent: 'center',
       alignItems: 'center',

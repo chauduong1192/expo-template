@@ -28,6 +28,7 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   const isRadio = type === 'radio';
+
   const styles = useStyles({ disabled, value, isRadio });
   const {
     theme: {
@@ -62,7 +63,7 @@ export const Checkbox = ({
     >
       <Box style={styles.checkbox}>
         {value &&
-          (isRadio ? (
+          (!isRadio ? (
             <CheckIcon
               color={disabled ? disabledBg : highEm}
               height={12}
@@ -107,7 +108,7 @@ const useStyles = makeStyles(
       backgroundColor: isChecked ? secondary : 'transparent',
       width: 20,
       height: 20,
-      borderRadius: isRadio ? BORDER_RADIUS_BASE : BORDER_RADIUS_FULL,
+      borderRadius: isRadio ? BORDER_RADIUS_FULL : BORDER_RADIUS_BASE,
       borderWidth: 1,
       borderColor: isChecked ? interactiveAlpha : interactive,
       justifyContent: 'center',

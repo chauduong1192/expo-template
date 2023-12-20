@@ -11,10 +11,10 @@ import {
 global.STORIES = [
   {
     titlePrefix: '',
-    directory: './src/components',
+    directory: './src/stories',
     files: '**/*.stories.?(ts|tsx|js|jsx)',
     importPathMatcher:
-      '^\\.[\\\\/](?:src\\/components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$',
+      '^\\.[\\\\/](?:src\\/stories(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$',
   },
 ];
 
@@ -48,8 +48,26 @@ try {
 
 const getStories = () => {
   return {
-    './src/components/EmptyState/EmptyState.stories.tsx': require('../src/components/EmptyState/EmptyState.stories.tsx'),
-    './src/components/Logo/Logo.stories.tsx': require('../src/components/Logo/Logo.stories.tsx'),
+    './src/stories/Avatar.stories.tsx': require('../src/stories/Avatar.stories.tsx'),
+    './src/stories/Badge.stories.tsx': require('../src/stories/Badge.stories.tsx'),
+    './src/stories/BorderTopLight.stories.tsx': require('../src/stories/BorderTopLight.stories.tsx'),
+    './src/stories/Button.stories.tsx': require('../src/stories/Button.stories.tsx'),
+    './src/stories/EmptyState.stories.tsx': require('../src/stories/EmptyState.stories.tsx'),
+    './src/stories/HeaderCustom.stories.tsx': require('../src/stories/HeaderCustom.stories.tsx'),
+    './src/stories/Layout.stories.tsx': require('../src/stories/Layout.stories.tsx'),
+    './src/stories/Logo.stories.tsx': require('../src/stories/Logo.stories.tsx'),
+    './src/stories/Modal.stories.tsx': require('../src/stories/Modal.stories.tsx'),
+    './src/stories/Popover.stories.tsx': require('../src/stories/Popover.stories.tsx'),
+    './src/stories/Skeleton.stories.tsx': require('../src/stories/Skeleton.stories.tsx'),
+    './src/stories/Tabs.stories.tsx': require('../src/stories/Tabs.stories.tsx'),
+    './src/stories/Text.stories.tsx': require('../src/stories/Text.stories.tsx'),
+    './src/stories/UserNav.stories.tsx': require('../src/stories/UserNav.stories.tsx'),
+    './src/stories/Input.stories.tsx': require('../src/stories/Input.stories.tsx'),
+    './src/stories/Checkbox.stories.tsx': require('../src/stories/Checkbox.stories.tsx'),
+    './src/stories/Radio.stories.tsx': require('../src/stories/Radio.stories.tsx'),
+    './src/stories/Switch.stories.tsx': require('../src/stories/Switch.stories.tsx'),
+    './src/stories/TextArea.stories.tsx': require('../src/stories/TextArea.stories.tsx'),
+    './src/stories/InputSearch.stories.tsx': require('../src/stories/InputSearch.stories.tsx'),
   };
 };
 

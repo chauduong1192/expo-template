@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { Skeleton } from '@rneui/base';
 import { useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -21,6 +20,7 @@ import {
   ModalHeader,
 } from '@/components/Modal';
 import { Popover } from '@/components/Popover';
+import { Skeleton } from '@/components/Skeleton';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
 import { SectionComponent } from '@/features/showcase/components';

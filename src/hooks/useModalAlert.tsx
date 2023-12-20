@@ -1,3 +1,4 @@
+import { type BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import { useTheme } from '@rneui/themed';
 import { type ReactElement, useMemo } from 'react';
 import { ActivityIndicator, type ViewProps } from 'react-native';
@@ -17,7 +18,7 @@ import { Modal, ModalContent, ModalFooter } from '@/components/Modal';
 import { type ModalAlertType } from '@/components/Modal/types';
 import { Text } from '@/components/Text';
 
-interface useModalAlertProps extends ViewProps {
+export interface useModalAlertProps extends ViewProps {
   title?: string | ReactElement;
   description?: string | ReactElement;
   type?: ModalAlertType;
@@ -31,6 +32,7 @@ interface useModalAlertProps extends ViewProps {
     disabled?: boolean;
     fullWidth?: boolean;
   }[];
+  snapPoints?: BottomSheetModalProps['snapPoints'];
 }
 
 const DEFAULT_SIZE = {
@@ -44,6 +46,7 @@ export const useModalAlert = ({
   type = 'loading',
   actionButtons = [],
   children,
+  snapPoints,
 }: useModalAlertProps) => {
   const { ref, onOpen, onClose, onDismiss } = useModal();
   const {
@@ -121,7 +124,7 @@ export const useModalAlert = ({
   }, [type]);
 
   const renderModal = (() => (
-    <Modal ref={ref} snapPoints={['25%']}>
+    <Modal ref={ref} snapPoints={snapPoints ?? ['25%']}>
       {renderSuccessImage}
       <ModalContent
         style={{

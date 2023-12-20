@@ -15,7 +15,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "src/components/EmptyState/EmptyState.stories.tsx"  ],
+    "expo-env.d.ts"],
   "exclude": ["node_modules", "coverage", "plopfile.js"]
 }

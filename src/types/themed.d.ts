@@ -28,6 +28,8 @@ declare module '@rneui/themed' {
       bg: string;
       bgAlternate: string;
       bgEmphasized: string;
+      bgDanger: string;
+      bgEmphasizedColored: string;
     };
     surface: {
       card: string;
@@ -42,6 +44,8 @@ declare module '@rneui/themed' {
       interactive: string;
       interactiveAlpha: string;
       emphasized: string;
+      emphasizedColored: string;
+      danger: string;
     };
     controls: {
       primary: string;

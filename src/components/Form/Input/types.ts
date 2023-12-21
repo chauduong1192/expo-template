@@ -4,14 +4,15 @@ import {
   type StyleProp,
   type TextInputProps,
   type TextStyle,
-  type ViewProps,
   type ViewStyle,
 } from 'react-native';
+
+import { type CommonProps } from '@/types/common';
 
 /**
  * Props for Input component.
  *
- * Extends ViewProps and TextInputProps.
+ * Extends CommonProps and TextInputProps.
  *
  * @interface
  *
@@ -36,7 +37,7 @@ import {
  */
 
 export interface InputProps
-  extends ViewProps,
+  extends CommonProps,
     Pick<TextInputProps, 'textContentType'> {
   isMasked?: boolean;
   name?: string;

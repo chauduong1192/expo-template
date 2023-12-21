@@ -22,6 +22,8 @@ export const theme = createTheme({
       bg: '#0d0e13',
       bgAlternate: '#111218',
       bgEmphasized: '#15171E',
+      bgDanger: '#21070C',
+      bgEmphasizedColored: '#2B120C',
     },
     surface: {
       card: '#171921',
@@ -36,6 +38,8 @@ export const theme = createTheme({
       interactive: '#1F222D',
       interactiveAlpha: '#acb5f324',
       emphasized: '#EBECEF',
+      emphasizedColored: '#7C2613',
+      danger: '#7C1529',
     },
     controls: {
       primary: '#EBECEF',
@@ -80,6 +84,8 @@ export const theme = createTheme({
       bg: '#0d0e13',
       bgAlternate: '#111218',
       bgEmphasized: '#15171E',
+      bgDanger: '#21070C',
+      bgEmphasizedColored: '#2B120C',
     },
     surface: {
       card: '#171921',
@@ -94,6 +100,8 @@ export const theme = createTheme({
       interactive: '#1F222D',
       interactiveAlpha: '#acb5f324',
       emphasized: '#EBECEF',
+      emphasizedColored: '#7C2613',
+      danger: '#7C1529',
     },
     controls: {
       primary: '#EBECEF',

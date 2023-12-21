@@ -13,6 +13,7 @@ import GamePadIcon from './game-pad.svg';
 import GearSix from './gear-six.svg';
 import GiftIcon from './gift.svg';
 import HomeSimpleIcon from './home-simple.svg';
+import LikeDroplet from './like-droplet.svg';
 import ListBulletsIcon from './list-bullets.svg';
 import LogoIcon from './logo.svg';
 import PlusCircleIcon from './plus-circle.svg';
@@ -41,6 +42,7 @@ export {
   GearSix,
   GiftIcon,
   HomeSimpleIcon,
+  LikeDroplet,
   ListBulletsIcon,
   LogoIcon,
   PlusCircleIcon,

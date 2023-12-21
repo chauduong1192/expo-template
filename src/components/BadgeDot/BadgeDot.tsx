@@ -1,6 +1,5 @@
 import { useTheme } from '@rneui/themed';
 import React, { useEffect } from 'react';
-import { type ViewProps } from 'react-native';
 import Animated, {
   useSharedValue,
   withTiming,
@@ -12,8 +11,9 @@ import Animated, {
 
 import { Box } from '@/components/Layout';
 import { BORDER_RADIUS_FULL } from '@/constants';
+import { type CommonProps } from '@/types/common';
 
-export interface BadgeDotProps extends ViewProps {
+export interface BadgeDotProps extends CommonProps {
   isAnimation?: boolean;
 }
 

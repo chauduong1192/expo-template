@@ -1,9 +1,10 @@
 import React from 'react';
-import { type ViewProps } from 'react-native';
 
 import { HStack } from '../Layout';
 
-interface ModalFooterProps extends ViewProps {}
+import { type CommonProps } from '@/types/common';
+
+interface ModalFooterProps extends CommonProps {}
 
 export const ModalFooter = ({ children, ...props }: ModalFooterProps) => {
   return (

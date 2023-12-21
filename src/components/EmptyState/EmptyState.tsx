@@ -1,12 +1,12 @@
 import { useTheme } from '@rneui/themed';
 import React, { type ReactElement } from 'react';
-import { type ViewProps } from 'react-native';
 
 import { BorderIcon, ListBulletsIcon } from '@/components/Icons';
 import { Box, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { type CommonProps } from '@/types/common';
 
-export interface EmptyStateProps extends ViewProps {
+export interface EmptyStateProps extends CommonProps {
   title: string | ReactElement;
   description?: string | ReactElement;
 }

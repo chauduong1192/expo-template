@@ -1,12 +1,12 @@
 import { useTheme } from '@rneui/themed';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { type ViewProps } from 'react-native';
 
 import { Box } from '@/components/Layout';
+import { type CommonProps } from '@/types/common';
 import { convertHexToRGBA } from '@/utils/color';
 
-export interface AvatarProps extends ViewProps {}
+export interface AvatarProps extends CommonProps {}
 
 export const Avatar = ({ style, ...props }: AvatarProps) => {
   const {

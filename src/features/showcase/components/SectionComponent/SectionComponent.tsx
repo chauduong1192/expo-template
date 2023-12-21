@@ -1,9 +1,8 @@
-import { type ViewProps } from 'react-native';
-
 import { VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { type CommonProps } from '@/types/common';
 
-interface SectionComponentProps extends ViewProps {
+interface SectionComponentProps extends CommonProps {
   title: string;
 }
 export const SectionComponent = ({

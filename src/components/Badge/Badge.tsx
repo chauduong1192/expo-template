@@ -1,11 +1,11 @@
 import { makeStyles } from '@rneui/themed';
 import React from 'react';
-import { type ViewProps } from 'react-native';
 
 import { Box } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { type CommonProps } from '@/types/common';
 
-export interface BadgeProps extends ViewProps {
+export interface BadgeProps extends CommonProps {
   emphasis?: 'high' | 'medium' | 'low';
 }
 

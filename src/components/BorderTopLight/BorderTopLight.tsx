@@ -1,8 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { type ViewProps } from 'react-native';
 
-export interface BorderTopLightProps extends ViewProps {}
+import { type CommonProps } from '@/types/common';
+
+export interface BorderTopLightProps extends CommonProps {}
 
 export const BorderTopLight = ({ ...props }: BorderTopLightProps) => {
   return (

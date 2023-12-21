@@ -1,7 +1,7 @@
 import { type BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import { useTheme } from '@rneui/themed';
 import { type ReactElement, useMemo } from 'react';
-import { ActivityIndicator, type ViewProps } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { useModal } from './useModal';
@@ -17,8 +17,9 @@ import { VStack } from '@/components/Layout';
 import { Modal, ModalContent, ModalFooter } from '@/components/Modal';
 import { type ModalAlertType } from '@/components/Modal/types';
 import { Text } from '@/components/Text';
+import { type CommonProps } from '@/types/common';
 
-export interface useModalAlertProps extends ViewProps {
+export interface useModalAlertProps extends CommonProps {
   title?: string | ReactElement;
   description?: string | ReactElement;
   type?: ModalAlertType;

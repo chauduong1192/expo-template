@@ -1,5 +1,5 @@
 import { makeStyles, useTheme } from '@rneui/themed';
-import { Pressable, type ViewProps } from 'react-native';
+import { Pressable } from 'react-native';
 
 import { Description } from '@/components/Form/Description';
 import { type InputProps } from '@/components/Form/Input/types';
@@ -8,9 +8,10 @@ import { Box, VStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 import { BORDER_RADIUS_BASE, BORDER_RADIUS_FULL } from '@/constants';
 import { useBehaviorState } from '@/hooks';
+import { type CommonProps } from '@/types/common';
 
 export interface CheckboxProps
-  extends ViewProps,
+  extends CommonProps,
     Pick<InputProps, 'disabled' | 'label' | 'description'> {
   value?: boolean;
   onValueChange?: (value: boolean) => void;

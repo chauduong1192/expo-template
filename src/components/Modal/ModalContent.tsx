@@ -1,9 +1,9 @@
 import React from 'react';
-import { type ViewProps } from 'react-native';
 
 import { VStack } from '@/components/Layout';
+import { type CommonProps } from '@/types/common';
 
-interface ModalContentProps extends ViewProps {}
+interface ModalContentProps extends CommonProps {}
 
 export const ModalContent = ({ children, ...props }: ModalContentProps) => {
   return (

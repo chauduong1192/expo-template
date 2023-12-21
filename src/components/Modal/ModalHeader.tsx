@@ -1,13 +1,13 @@
 import { useTheme } from '@rneui/themed';
 import React, { type ReactElement } from 'react';
-import { type ViewProps } from 'react-native';
 
 import { Button } from '@/components/Button';
 import { CloseIcon } from '@/components/Icons';
 import { HStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
+import { type CommonProps } from '@/types/common';
 
-interface ModalHeaderProps extends ViewProps {
+interface ModalHeaderProps extends CommonProps {
   title?: string | ReactElement;
   onClose?: () => void;
 }

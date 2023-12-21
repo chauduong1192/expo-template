@@ -1,11 +1,12 @@
 import { makeStyles } from '@rneui/themed';
-import { View, type ViewProps } from 'react-native';
+import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { BORDER_RADIUS_BASE } from '@/constants';
+import { type CommonProps } from '@/types/common';
 import { convertHexToRGBA } from '@/utils/color';
 
-interface BottomBorderProps extends ViewProps {
+interface BottomBorderProps extends CommonProps {
   error?: boolean;
   isFocused?: boolean;
   disabled?: boolean;

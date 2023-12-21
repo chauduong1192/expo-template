@@ -7,6 +7,7 @@ import { PopoverPlacement } from 'react-native-popover-view';
 import { useToggle } from 'usehooks-ts';
 
 import { BadgeDot } from '@/components/BadgeDot';
+import { Banner } from '@/components/Banner';
 import { Button } from '@/components/Button';
 import { EmptyState } from '@/components/EmptyState';
 import { InputWithLabel, Checkbox, Input, Switch } from '@/components/Form';
@@ -109,6 +110,37 @@ export const Showcase = () => {
 
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
+      {/* Banner */}
+      <SectionComponent title="Banner">
+        {(['generic', 'emphasized', 'danger'] as string[]).map((type, idx) => (
+          <Banner
+            actions={[
+              {
+                children: 'Label 1',
+                onPress: () => console.log('Press 1 !'),
+              },
+              {
+                children: 'Label 2',
+                onPress: () => console.log('Press 2 !'),
+              },
+            ]}
+            description="Description goes here"
+            key={idx}
+            title="Title goes here"
+            type={type as any}
+          />
+        ))}
+        {(['generic', 'emphasized', 'danger'] as string[]).map((type, idx) => (
+          <Banner
+            container="contained"
+            description="Description goes here"
+            key={idx}
+            title="Title goes here"
+            type={type as any}
+          />
+        ))}
+      </SectionComponent>
+
       {/* Skeleton */}
       <SectionComponent title="Skeleton">
         <Skeleton height={50} width="auto" />

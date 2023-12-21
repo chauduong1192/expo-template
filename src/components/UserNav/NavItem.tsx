@@ -1,15 +1,16 @@
 import { useTheme } from '@rneui/themed';
 import { Link, type Route } from 'expo-router';
 import React, { type ReactElement, useMemo, Fragment } from 'react';
-import { TouchableOpacity, type ViewProps } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { Badge } from '@/components/Badge';
 import { HStack } from '@/components/Layout';
 import { Text } from '@/components/Text';
 import { ACTIVE_OPACITY } from '@/constants';
+import { type CommonProps } from '@/types/common';
 import { cloneIcon } from '@/utils/icon';
 
-export interface NavItemProps extends ViewProps {
+export interface NavItemProps extends CommonProps {
   label: string;
   href?: Route<string> | any;
   icon: ReactElement;

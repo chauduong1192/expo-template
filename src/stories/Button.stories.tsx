@@ -51,3 +51,10 @@ export const WithIcons: ButtonStory = (args) => (
     iconRight={<PlusCircleIcon />}
   />
 );
+
+export const IconButton: ButtonStory = (args) => (
+  <Button {...args} iconLeft={<PlusCircleIcon />} />
+);
+IconButton.args = {
+  children: '',
+};

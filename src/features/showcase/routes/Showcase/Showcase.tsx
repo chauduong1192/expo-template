@@ -21,6 +21,7 @@ import {
   ModalHeader,
 } from '@/components/Modal';
 import { Popover } from '@/components/Popover';
+import { SegmentControls } from '@/components/SegmentControls';
 import { Skeleton } from '@/components/Skeleton';
 import { Tabs } from '@/components/Tabs';
 import { Text } from '@/components/Text';
@@ -110,6 +111,44 @@ export const Showcase = () => {
 
   return (
     <VStack gap={30} paddingX={20} paddingY={16}>
+      {/* Segment Controls */}
+      <SectionComponent title="SegmentControls">
+        <SegmentControls
+          indexActive={0}
+          options={[
+            {
+              children: 'Segment',
+            },
+            {
+              children: 'Segment',
+            },
+            {
+              children: 'Segment',
+            },
+            {
+              children: 'Segment',
+            },
+          ]}
+          size="xs"
+          onPress={(item) => console.log(item)}
+        />
+        <SegmentControls
+          indexActive={0}
+          options={[
+            {
+              children: 'Segment',
+            },
+            {
+              children: 'Segment',
+            },
+            {
+              children: 'Segment',
+            },
+          ]}
+          size="s"
+          onPress={(item) => console.log(item)}
+        />
+      </SectionComponent>
       {/* Banner */}
       <SectionComponent title="Banner">
         {(['generic', 'emphasized', 'danger'] as string[]).map((type, idx) => (

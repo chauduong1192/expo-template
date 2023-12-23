@@ -5,7 +5,6 @@ import {
   addDecorator,
   addParameters,
   addArgsEnhancer,
-  clearDecorators,
 } from '@storybook/react-native';
 
 global.STORIES = [
@@ -27,14 +26,6 @@ import { argsEnhancers } from '@storybook/addon-actions/dist/modern/preset/addAr
 import { decorators, parameters } from './preview';
 
 if (decorators) {
-  if (__DEV__) {
-    // stops the warning from showing on every HMR
-    require('react-native').LogBox.ignoreLogs([
-      '`clearDecorators` is deprecated and will be removed in Storybook 7.0',
-    ]);
-  }
-  // workaround for global decorators getting infinitely applied on HMR, see https://github.com/storybookjs/react-native/issues/185
-  clearDecorators();
   decorators.forEach((decorator) => addDecorator(decorator));
 }
 
@@ -63,6 +54,7 @@ const getStories = () => {
     './src/stories/Modal.stories.tsx': require('../src/stories/Modal.stories.tsx'),
     './src/stories/Popover.stories.tsx': require('../src/stories/Popover.stories.tsx'),
     './src/stories/Radio.stories.tsx': require('../src/stories/Radio.stories.tsx'),
+    './src/stories/SegmentControls.stories.tsx': require('../src/stories/SegmentControls.stories.tsx'),
     './src/stories/Skeleton.stories.tsx': require('../src/stories/Skeleton.stories.tsx'),
     './src/stories/Switch.stories.tsx': require('../src/stories/Switch.stories.tsx'),
     './src/stories/Tabs.stories.tsx': require('../src/stories/Tabs.stories.tsx'),

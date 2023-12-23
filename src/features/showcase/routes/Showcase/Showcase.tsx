@@ -78,6 +78,7 @@ export const Showcase = () => {
   const [value, setValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
   const [switchValue, toggle] = useToggle();
+  const [tabIndex, setTabIndex] = useState(0);
 
   const {
     theme: {
@@ -114,39 +115,18 @@ export const Showcase = () => {
       {/* Segment Controls */}
       <SectionComponent title="SegmentControls">
         <SegmentControls
-          indexActive={0}
-          options={[
-            {
-              children: 'Segment',
-            },
-            {
-              children: 'Segment',
-            },
-            {
-              children: 'Segment',
-            },
-            {
-              children: 'Segment',
-            },
-          ]}
-          size="xs"
-          onPress={(item) => console.log(item)}
+          containerMargin={20}
+          currentIndex={tabIndex}
+          segments={['Label', 'Label', 'Label']}
+          size="s"
+          onChange={setTabIndex}
         />
         <SegmentControls
-          indexActive={0}
-          options={[
-            {
-              children: 'Segment',
-            },
-            {
-              children: 'Segment',
-            },
-            {
-              children: 'Segment',
-            },
-          ]}
-          size="s"
-          onPress={(item) => console.log(item)}
+          containerMargin={20}
+          currentIndex={tabIndex}
+          segments={['Label', 'Label']}
+          size="xs"
+          onChange={setTabIndex}
         />
       </SectionComponent>
       {/* Banner */}
